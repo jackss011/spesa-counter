@@ -1,4 +1,4 @@
-import {Spec} from './model/Entry'
+import {Entry, Spec} from './model/Entry'
 
 export function sanitizePriceRest(str, validIds) {
     let ret = str;
@@ -9,8 +9,6 @@ export function sanitizePriceRest(str, validIds) {
 
     return ret;
 }
-
-
 
 
 export function parsePrice(str) {
@@ -36,7 +34,7 @@ export function parsePrice(str) {
 }
 
 
-function parseIds(str) {
+export function parseIds(str) {
     let decon = "";
     let ids = [];
 
@@ -55,7 +53,7 @@ function parseIds(str) {
 }
 
 
-function parseTimes(str) {
+export function parseTimes(str) {
     let decon = "";
 
     if(!str) return {times: null, rest: null};
@@ -90,4 +88,37 @@ export function parseSpec(str) {
     spec.setTimes(times);
 
     return {spec, rest};
+}
+
+
+export function parseEntry(value, validIds) {
+    let sanitizedValue = value;
+    let entry = new Entry();
+
+    if(value !== '') {
+        let priceResult = parsePrice(value);
+        if(!priceResult.price) return;
+        entry.setPrice(priceResult.price);
+
+        let rest = sanitizePriceRest(priceResult.rest, validIds);
+
+        while(true) {
+            let specResult = parseSpec(rest);
+
+            if(!specResult || !specResult.spec) {
+                break;
+            }
+            else {
+                entry.addSpec(specResult.spec);
+                rest = specResult.rest;
+            }
+        }
+
+        sanitizedValue = priceResult.taken + entry.specsToString();
+    }
+    else {
+        entry = null;
+    }
+
+    return {sanitizedValue, entry};
 }
