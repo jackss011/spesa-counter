@@ -1,12 +1,13 @@
 import {Spec} from './model/Entry'
 
-export function isEntryInputValid(str, validIds) {
-    for(let ch of str) {
-        if(isNaN(ch) && !validIds(ch) && ch !== ' ' && ch !== '.')
-            return false;
-    }
+export function sanitizePriceRest(str, validIds) {
+    let ret = str;
 
-    return true
+    for(let ch of str)
+        if(isNaN(ch) && !validIds(ch) && ch !== ' ')
+            ret = ret.replace(ch, "");
+
+    return ret;
 }
 
 
@@ -14,12 +15,15 @@ export function isEntryInputValid(str, validIds) {
 
 export function parsePrice(str) {
     let decon = "";
+    let foundDot = false;
 
     for(let ch of str) {
         let num = Number(ch);
 
-        if((!isNaN(num) || ch == '.') && ch != ' ')
+        if((!isNaN(num) || (ch === '.' && !foundDot)) && ch != ' ') {
+            if(ch === '.') foundDot = true;
             decon += ch;
+        }
         else
             break;
     }
@@ -53,7 +57,7 @@ function parseIds(str) {
 function parseTimes(str) {
     let decon = "";
 
-    if(!str) return {times: 1, rest: null};
+    if(!str) return {times: null, rest: null};
 
     for(let ch of str) {
         let num = Number(ch);
@@ -74,7 +78,6 @@ function parseTimes(str) {
 export function parseSpec(str) {
     if(!str) return;
 
-    let decon = "";
     let spec = new Spec();
 
     let retIds = parseIds(str);

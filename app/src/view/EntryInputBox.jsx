@@ -1,5 +1,6 @@
 import React from 'react'
-import {parsePrice, parseSpec, isEntryInputValid} from '../utils'
+import {parsePrice, parseSpec, sanitizePriceRest} from '../utils'
+import {Entry} from '../model/Entry'
 
 
 class EntryInputBox extends React.Component {
@@ -21,20 +22,35 @@ class EntryInputBox extends React.Component {
     }
 
     onChange(event) {
-        let newValue = event.target.value;
+        let value = event.target.value;
 
-        if(isEntryInputValid(newValue, this.isValidId)) {
-            console.log('here');
+        let entry = new Entry();
 
-            let ret1 = parsePrice(newValue);
-            //console.log(ret1);
+        if(value !== '') {
+            let priceResult = parsePrice(value);
+            if(!priceResult.price) return;
+            entry.setPrice(priceResult.price);
 
-            let ret2 = parseSpec(ret1.rest);
-            //console.log(ret2);
+            let rest = sanitizePriceRest(priceResult.rest, this.isValidId);
 
+            while(true) {
+                let specResult = parseSpec(rest);
 
-            this.setState({value: newValue});
+                if(!specResult || !specResult.spec) {
+                    break;
+                }
+                else {
+                    entry.addSpec(specResult.spec);
+                    rest = specResult.rest;
+                }
+            }
         }
+
+        console.log(entry);
+        console.log(entry.specsToString());
+
+
+        this.setState({value: value});
     }
 
     onSubmit(event) {

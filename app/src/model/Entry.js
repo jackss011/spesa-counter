@@ -2,11 +2,11 @@
 export class Spec {
     constructor() {
         this.ids = [];
-        this.times = 1;
+        this.times = -1;
     }
 
     isForAll() {
-        return this.ids === [];
+        return this.ids.length === 0;
     }
 
     addId(id) {
@@ -16,9 +16,18 @@ export class Spec {
     }
 
     setTimes(n) {
-        if(isNaN(n)) return;
+        if(!n ||isNaN(n)) return;
 
         this.times = n;
+    }
+
+    toString() {
+        let times = this.times > 0 ? this.times : '';
+
+        if(this.isForAll()) return ' ' + times;
+
+        let ids = this.ids.reduce((acc, curr) => acc + curr, '');
+        return ids + times;
     }
 }
 
@@ -26,7 +35,7 @@ export class Spec {
 export class Entry {
     constructor() {
         this.price = 0.0;
-        this.specs = [new Spec()];
+        this.specs = [];
     }
 
     addSpec(spec) {
@@ -46,7 +55,11 @@ export class Entry {
         this.specs = newSpecs;
     }
 
-    set price(p) {
+    setPrice(p) {
         this.price = p;
+    }
+
+    specsToString() {
+        return this.specs.reduce((acc, curr) => acc + curr.toString(), '');
     }
 }
