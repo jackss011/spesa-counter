@@ -16,6 +16,7 @@ class EntryInputBox extends React.Component {
                 type='text'
                 value={this.state.value}
                 onChange={e => this.onChange(e)}
+                onKeyDown={e => this.onKeyDown(e)}
             />
         );
     }
@@ -52,6 +53,17 @@ class EntryInputBox extends React.Component {
         //console.log(entry);
 
         this.setState({value, entry});
+    }
+
+    onKeyDown(event) {
+        if(event.key === 'Enter' && this.state.entry) {
+            console.log('Yepppp');
+            this.reset();
+        }
+    }
+
+    reset() {
+        this.setState({value: '', entry: null});
     }
 
     isValidId(id) {
