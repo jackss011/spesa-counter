@@ -7,7 +7,7 @@ class EntryInputBox extends React.Component {
     constructor() {
         super();
 
-        this.state = { value: '' };
+        this.state = { value: '', entry: null };
     }
 
     render() {
@@ -16,7 +16,6 @@ class EntryInputBox extends React.Component {
                 type='text'
                 value={this.state.value}
                 onChange={e => this.onChange(e)}
-                onSubmit={e => this.onSubmit(e)}
             />
         );
     }
@@ -44,17 +43,15 @@ class EntryInputBox extends React.Component {
                     rest = specResult.rest;
                 }
             }
+
+            value = priceResult.taken + entry.specsToString();
         }
+        else {
+            entry = null;
+        }
+        //console.log(entry);
 
-        console.log(entry);
-        console.log(entry.specsToString());
-
-
-        this.setState({value: value});
-    }
-
-    onSubmit(event) {
-        //console.log(event);
+        this.setState({value, entry});
     }
 
     isValidId(id) {

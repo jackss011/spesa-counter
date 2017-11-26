@@ -12,7 +12,20 @@ export class Spec {
     addId(id) {
         if(!id) return;
 
-        this.ids.push(...id);
+        if(!this.ids.includes(id))
+            this.ids.push(id);
+    }
+
+    addIds(ids) {
+        ids.forEach(id => this.addId(id));
+    }
+
+    hasId(id) {
+        return this.ids.includes(id);
+    }
+
+    getIds() {
+        return this.ids;
     }
 
     setTimes(n) {
@@ -41,8 +54,26 @@ export class Entry {
     addSpec(spec) {
         if(!spec) return;
 
-        this.removeForAllSpecs();
+        if(this.hasForAllSpec()) return;
+        if(this.hasDuplicatedIds(spec)) return;
+
         this.specs.push(spec);
+    }
+
+    hasForAllSpec() {
+        return this.specs.reduce((acc, spec) => acc || spec.isForAll(), false);
+    }
+
+    hasDuplicatedIds(spec) {
+        let duplicates = false;
+
+        this.specs.forEach(s => {
+            s.getIds().forEach(id => {
+                if(spec.hasId(id)) duplicates = true;
+            })
+        })
+
+        return duplicates;
     }
 
     removeForAllSpecs() {

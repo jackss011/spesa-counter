@@ -29,9 +29,10 @@ export function parsePrice(str) {
     }
 
     let rest = str.substring(decon.length, str.length);
+    let taken = str.substring(0, decon.length);
     let price = parseFloat(decon);
 
-    return {price, rest};
+    return {price, rest, taken};
 }
 
 
@@ -81,7 +82,7 @@ export function parseSpec(str) {
     let spec = new Spec();
 
     let retIds = parseIds(str);
-    spec.addId(retIds.ids);
+    spec.addIds(retIds.ids);
 
     //console.log('rest tmp:', retIds.rest);
 
