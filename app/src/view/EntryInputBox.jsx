@@ -1,6 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
 import {parseEntry} from '../utils'
 import {Entry} from '../model/Entry'
+import ActionGenerator from '../redux/actions'
 
 
 class EntryInputBox extends React.Component {
@@ -28,7 +31,7 @@ class EntryInputBox extends React.Component {
 
     onKeyDown(event) {
         if(event.key === 'Enter' && this.state.entry) {
-            console.log('Yepppp');
+            this.props.onAddEntry(this.state.entry);
             this.reset();
         }
     }
@@ -42,4 +45,11 @@ class EntryInputBox extends React.Component {
     }
 }
 
-export default EntryInputBox;
+
+function mapDispatchToProps(dispatch) {
+    return {
+        onAddEntry: (entry) => dispatch(ActionGenerator.addEntry(entry))
+    };
+}
+
+export default connect(null, mapDispatchToProps)(EntryInputBox);

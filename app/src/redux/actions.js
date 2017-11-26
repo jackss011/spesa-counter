@@ -1,10 +1,11 @@
 
-const ActionTypes = {
+export const ActionTypes = {
     ADD_ENTRY: 'ADD_ENTRY',
 }
 
-class ActionGenerator {
+
+export default class ActionGenerator {
     static addEntry(entry) {
-        return {type: ADD_ENTRY, entry};
+        return {type: ActionTypes.ADD_ENTRY, entry};
     }
 }
