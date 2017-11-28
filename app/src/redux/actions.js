@@ -6,7 +6,7 @@ export const ActionTypes = {
 }
 
 
-export default class ActionGenerator {
+export class ActionGenerator {
     static addEntry(id, entry) {
         return {type: ActionTypes.ADD_ENTRY, id, entry};
     }
