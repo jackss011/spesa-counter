@@ -14,6 +14,7 @@ class EntryList extends React.Component {
     }
 
     createListRows() {
+        //TODO: make this a util function (mapEntries)
         return Object.entries(this.props.entries)
             .map( ([id, entry]) => <EntryListRow key={id} id={id} entry={entry}/>);
     }

@@ -17,3 +17,9 @@ export function makeRandomId() {
 export function getRandomInt(max) {
     return Math.floor(Math.random() * (max + 1));
 }
+
+
+/** mapper: function(id, value) returns object to map */
+export function mapEntries(obj, mapper) {
+    return Object.entries(obj).map(([id, value]) => mapper(id, value));
+}
