@@ -5,6 +5,7 @@ import {parseEntry} from 'model/parser'
 import {Entry} from 'model/Entry'
 import {ActionGenerator} from 'redux/actions'
 import {makeRandomId} from 'model/utils'
+import {existUserId} from 'redux/helpers'
 
 
 class EntryInputBox extends React.Component {
@@ -26,7 +27,8 @@ class EntryInputBox extends React.Component {
     }
 
     onChange({target}) {
-        let {sanitizedValue, entry} = parseEntry(target.value, this.isValidId);
+        let {sanitizedValue, entry} =
+            parseEntry(target.value, id => this.props.validId(id));
         this.setState({value: sanitizedValue, entry});
     }
 
@@ -40,12 +42,14 @@ class EntryInputBox extends React.Component {
     reset() {
         this.setState({value: '', entry: null});
     }
-
-    isValidId(id) {
-        return id === 'c' || id === 'a';
-    }
 }
 
+
+function mapStateToProps(state) {
+    return {
+        validId: id => existUserId(state.users, id)
+    }
+}
 
 function mapDispatchToProps(dispatch) {
     return {
@@ -53,4 +57,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(null, mapDispatchToProps)(EntryInputBox);
+export default connect(mapStateToProps, mapDispatchToProps)(EntryInputBox);
