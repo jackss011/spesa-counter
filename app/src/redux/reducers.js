@@ -5,8 +5,17 @@ import {ActionTypes} from './actions'
 function entries(state = {}, action) {
     switch (action.type) {
         case ActionTypes.ADD_ENTRY:
-            console.log('here');
             return Object.assign({}, state, {[action.id]: action.entry})
+
+        default:
+            return state;
+    }
+}
+
+function users(state = {}, action) {
+    switch (action.type) {
+        case ActionTypes.ADD_USER:
+            return Object.assign({}, state, {[action.user.id]: action.user})
 
         default:
             return state;
@@ -15,4 +24,4 @@ function entries(state = {}, action) {
 
 
 
-export default combineReducers({entries});
+export default combineReducers({entries, users});
