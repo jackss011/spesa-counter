@@ -1,7 +1,7 @@
 import React from 'react'
 
-import EntryList from './EntryList'
-import EntryInputBox from './EntryInputBox'
+import EntryList from './entries/EntryList'
+import EntryInputBox from './entries/EntryInputBox'
 
 
 class App extends React.Component {
