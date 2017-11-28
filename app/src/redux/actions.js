@@ -5,7 +5,7 @@ export const ActionTypes = {
 
 
 export default class ActionGenerator {
-    static addEntry(entry) {
-        return {type: ActionTypes.ADD_ENTRY, entry};
+    static addEntry(id, entry) {
+        return {type: ActionTypes.ADD_ENTRY, id, entry};
     }
 }

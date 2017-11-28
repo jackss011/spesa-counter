@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import {parseEntry} from '../utils'
 import {Entry} from '../model/Entry'
 import ActionGenerator from '../redux/actions'
+import {makeRandomId} from '../model/utils'
 
 
 class EntryInputBox extends React.Component {
@@ -48,7 +49,7 @@ class EntryInputBox extends React.Component {
 
 function mapDispatchToProps(dispatch) {
     return {
-        onAddEntry: (entry) => dispatch(ActionGenerator.addEntry(entry))
+        onAddEntry: (entry) => dispatch(ActionGenerator.addEntry(makeRandomId(), entry))
     };
 }
 
