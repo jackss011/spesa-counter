@@ -1,4 +1,5 @@
 import React from 'react'
+import {connect} from 'react-redux'
 
 import EntryListRow from './EntryListRow'
 
@@ -13,9 +14,16 @@ class EntryList extends React.Component {
     }
 
     createListRows() {
-        return [<EntryListRow key='0'/>];
+        return Object.entries(this.props.entries)
+            .map( ([id, entry]) => <EntryListRow key={id} id={id} entry={entry}/>);
     }
 }
 
 
-export default EntryList;
+function mapStateToProps(state) {
+    return {
+        entries: state.entries
+    };
+}
+
+export default connect(mapStateToProps)(EntryList);
