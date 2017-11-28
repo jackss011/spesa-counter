@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import {parseEntry} from '../utils'
+import {parseEntry} from '../model/parser'
 import {Entry} from '../model/Entry'
 import ActionGenerator from '../redux/actions'
 import {makeRandomId} from '../model/utils'

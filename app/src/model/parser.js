@@ -1,4 +1,4 @@
-import {Entry, Spec} from './model/Entry'
+import {Entry, Spec} from './Entry'
 
 export function sanitizePriceRest(str, validIds) {
     let ret = str;
