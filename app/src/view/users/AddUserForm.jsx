@@ -1,8 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {ActionGenerator} from 'redux/actions'
+import { ActionGenerator } from 'redux/actions'
 import User from 'model/User'
+import * as reduxHelpers from 'redux/helpers'
 
 
 class AddUserForm extends React.Component {
@@ -16,6 +17,7 @@ class AddUserForm extends React.Component {
             <form onSubmit={e => this.onSubmit(e)}>
                 <input
                     type="text"
+                    ref={input => this.firstInput = input}
                     value={this.state.id}
                     onChange={e => this.onIdChange(e)}
                 />
@@ -40,7 +42,7 @@ class AddUserForm extends React.Component {
         let lastChar = value.charAt(value.length - 1);
 
         let id;
-        if(User.isValidId(lastChar))
+        if(User.isValidId(lastChar) && this.props.isUserIdUnique(lastChar))
             id = lastChar;
         else
             id = oldValue;
@@ -63,6 +65,7 @@ class AddUserForm extends React.Component {
     }
 
     reset() {
+        this.firstInput.focus();
         this.setState({id: '', name: ''});
     }
 
@@ -72,10 +75,17 @@ class AddUserForm extends React.Component {
 }
 
 
+
+function mapStateToProps({users}) {
+    return {
+        isUserIdUnique: id => !reduxHelpers.existUserId(users, id)
+    };
+}
+
 function mapDispatchToProps(dispatch) {
     return {
         onAddUser: user => dispatch(ActionGenerator.addUser(user))
     };
 }
 
-export default connect(null, mapDispatchToProps)(AddUserForm);
+export default connect(mapStateToProps, mapDispatchToProps)(AddUserForm);
