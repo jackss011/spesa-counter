@@ -97,7 +97,7 @@ export function parseEntry(value, validIds) {
 
     if(value !== '') {
         let priceResult = parsePrice(value);
-        if(!priceResult.price) return;
+        if(!priceResult.price) return {sanitizedValue: "", entry: null}
         entry.setPrice(priceResult.price);
 
         let rest = sanitizePriceRest(priceResult.rest, validIds);
@@ -114,7 +114,7 @@ export function parseEntry(value, validIds) {
             }
         }
 
-        sanitizedValue = priceResult.taken + entry.specsToString();
+        sanitizedValue = priceResult.taken + entry.specsToString() || '';
     }
     else {
         entry = null;
