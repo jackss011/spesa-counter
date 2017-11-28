@@ -1,8 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {ActionGenerator} from '../../redux/actions'
-import User from '../../model/User'
+import {ActionGenerator} from 'redux/actions'
+import User from 'model/User'
 
 
 class AddUserForm extends React.Component {

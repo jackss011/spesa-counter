@@ -27,7 +27,8 @@ module.exports = {
     },
 
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.js', '.jsx'],
+        modules: ['./node_modules', './app/src']
     },
 
     plugins: [
