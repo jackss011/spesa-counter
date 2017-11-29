@@ -34,6 +34,10 @@ export class Spec {
         this.times = n;
     }
 
+    getTimes() {
+        return this.times > 0 ? this.times : 1;
+    }
+
     toString() {
         let times = this.times > 0 ? this.times : '';
 
@@ -90,7 +94,36 @@ export class Entry {
         this.price = p;
     }
 
+    getPrice() {
+        return this.price;
+    }
+
     specsToString() {
         return this.specs.reduce((acc, curr) => acc + curr.toString(), '');
+    }
+
+    getSpecs() {
+        return this.specs.length > 0 ? this.specs : [new Spec()];
+    }
+
+    calculate(shares) {
+        this.getSpecs().forEach(spec => {
+            const toPay = spec.getTimes() * this.getPrice();
+
+            if(!spec.isForAll()) {
+                const ids = spec.getIds();
+
+                for(let id of ids)
+                    shares[id] += toPay / ids.length;
+            }
+            else {
+                const userNum = Object.entries(shares).length;
+
+                for(const id in shares)
+                    shares[id] += toPay / userNum;
+            }
+        })
+
+        return shares;
     }
 }

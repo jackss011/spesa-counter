@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import UserListRow from './UserListRow'
 import { mapEntries } from 'model/utils'
+import { calculateShares } from 'redux/helpers'
 
 
 class UserList extends React.Component {
@@ -15,14 +16,17 @@ class UserList extends React.Component {
     }
 
     createUserList() {
+        const shares = calculateShares(this.props.users, this.props.entries);
+
         return mapEntries(this.props.users,
-            (id, user) => <UserListRow key={id} user={user}/>);
+            (id, user) => <UserListRow key={id} user={user} share={shares[id]}/>);
     }
 }
 
-function mapStateToProps({users}) {
+
+function mapStateToProps({users, entries}) {
     return {
-        users
+        users, entries
     }
 }
 
