@@ -1,0 +1,31 @@
+
+$BORDER_SMALL: 1px solid #ccc
+$BORDER_MEDIUM: 1.2px solid #ccc
+$BORDER_HEAVY: 3px solid #ccc
+
+
+=size($x, $y: $x)
+    width: $x
+    height: $y
+
+=flex($dir)
+    display: flex
+    flex-direction: $dir
+    align-items: center
+
+
+=pane
+    padding: 10px
+    display: block
+    border-radius: 3px
+    background-color: white
+    border: $BORDER_MEDIUM
+
+
+=row
+    display: flex
+    flex-direction: row
+    align-items: center
+    padding: 5px 10px
+    border-radius: 2px
+    border: $BORDER_SMALL

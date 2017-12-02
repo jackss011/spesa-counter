@@ -7,7 +7,7 @@ import EntryListRow from './EntryListRow'
 class EntryList extends React.Component {
     render() {
         return (
-            <ul>
+            <ul className="entry-list">
                 {this.createListRows()}
             </ul>
         );
