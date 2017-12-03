@@ -5,12 +5,13 @@ require('../styles/main.sass')
 
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
 import logger from 'redux-logger'
 import reducer from './redux/reducers'
 
 import App from './view/App'
 
 
-const store = createStore(reducer, applyMiddleware(logger));
+const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(<Provider store={store}><App/></Provider>, document.getElementById('root'));

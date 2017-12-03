@@ -5,6 +5,16 @@ export default class User {
         this._name = name;
     }
 
+    set id(id) {
+        if(!id) return;
+        this._id = id;
+    }
+
+    set name(name) {
+        if(!name) return;
+        this._name = name;
+    }
+
     get id() {
         return this._id;
     }
@@ -15,5 +25,14 @@ export default class User {
 
     static isValidId(id) {
         return typeof id === 'string' && /^[a-z]/.test(id) && id.length === 1;
+    }
+
+    static fromJSON(json) {
+        let user = new User();
+
+        user.id = json._id;
+        user.name = json._name;
+
+        return user;
     }
 }
