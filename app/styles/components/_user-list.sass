@@ -1,6 +1,6 @@
 
 .user-list
-    +flex(column)
+    +flex(column, flex-start, stretch)
     flex-grow: 1
     margin: 0
     padding: 0
@@ -10,12 +10,14 @@
 
 .user-list-row
     +row()
-    +row-margin(.4em)
+    +row-margin(.5em)
 
     .name
         text-transform: capitalize
+    //
 
     .share
         +flex(row, flex-end)
         flex-grow: 1
+    //
 //
