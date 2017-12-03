@@ -1,24 +1,52 @@
 import React from 'react'
+import {connect} from 'react-redux'
 
+import {ActionGenerator} from 'redux/actions'
 import AddUserForm from './AddUserForm'
 
 
 class UserHeader extends React.Component {
     render() {
+        const displayForm = this.props.displayForm;
+
         return (
             <div className="user-header">
                 <div className="top-row">
                     <div className="label">Users</div>
 
-                    <button onClick={e => this.onAddUser()}>
-                        Add
+                    <button
+                        onClick={e => this.onAddUser()}
+                        className={!displayForm ? 'add' : 'cancel'}
+                    >
+                        {!displayForm ? 'Add' : 'Cancel'}
                     </button>
                 </div>
 
-                {/* <AddUserForm/> */}
+                {displayForm && <AddUserForm/>}
             </div>
         );
     }
+
+
+    onAddUser() {
+        this.props.onToggleForm();
+    }
 }
 
-export default UserHeader
+
+function mapStateToProps({ui}) {
+    return {
+        displayForm: ui.displayAddUserForm,
+    };
+}
+
+
+function mapDispatchToProps(dispatch) {
+    return {
+        onToggleForm: () =>
+            dispatch(ActionGenerator.UI_toggleAddUserForm()),
+    };
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserHeader)

@@ -8,6 +8,9 @@ export const ActionTypes = {
 
     ADD_USER: 'ADD_USER',
     SET_USERS: 'SET_USERS',
+
+    UI_DISPLAY_ADD_USER: 'UI_DISPLAY_ADD_USER',
+    UI_TOGGLE_ADD_USER: 'UI_TOGGLE_ADD_USER',
 }
 
 
@@ -48,5 +51,14 @@ export class ActionGenerator {
 
     static setUsers(users) {
         return {type: ActionTypes.SET_USERS, users};
+    }
+
+
+    static UI_displayAddUserForm(display) {
+        return {type: ActionTypes.UI_DISPLAY_ADD_USER, display};
+    }
+
+    static UI_toggleAddUserForm() {
+        return {type: ActionTypes.UI_TOGGLE_ADD_USER};
     }
 }

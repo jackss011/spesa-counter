@@ -31,5 +31,18 @@ function users(state = {}, action) {
 }
 
 
+function ui(state = {displayAddUserForm: false}, action) {
+    switch (action.type) {
+        case ActionTypes.UI_DISPLAY_ADD_USER:
+            return Object.assign({}, state, {displayAddUserForm: action.display});
 
-export default combineReducers({entries, users});
+        case ActionTypes.UI_TOGGLE_ADD_USER:
+            return Object.assign({}, state, {displayAddUserForm: !state.displayAddUserForm});
+
+        default:
+            return state;
+    }
+}
+
+
+export default combineReducers({entries, users, ui});
