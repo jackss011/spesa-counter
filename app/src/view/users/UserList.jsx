@@ -9,9 +9,11 @@ import { calculateShares } from 'redux/helpers'
 class UserList extends React.Component {
     render() {
         return (
-            <ul>
-                {this.createUserList()}
-            </ul>
+            <div className="user-list">
+                <ul>
+                    {this.createUserList()}
+                </ul>
+            </div>
         )
     }
 

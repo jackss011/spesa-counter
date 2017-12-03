@@ -1,0 +1,29 @@
+=button-base
+    outline: none
+    +flex(row, center, center)
+    font-size: 1rem
+    border-radius: 3px
+
+    transition: background-color 0.2s
+
+=button-concrete($color)
+    +button-base
+    border: none
+    background-color: $color
+    font-weight: bold
+    color: white
+    padding: .5em .8em
+
+    &:hover
+        background-color: darken($color, 10)
+
+
+=button-ghost($color)
+    outline: none
+    border: none
+    color: $color
+    font-weight: bold
+    background-color: transparent
+
+    &:hover
+        background-color: rgba(black, .08)

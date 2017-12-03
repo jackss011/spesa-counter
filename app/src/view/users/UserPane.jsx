@@ -1,14 +1,14 @@
 import React from 'react'
 
-import AddUserForm from './AddUserForm'
+import UserHeader from './UserHeader'
 import UserList from './UserList'
 
 
 class UserPane extends React.Component {
     render() {
         return (
-            <div>
-                <AddUserForm/>
+            <div className="user-pane">
+                <UserHeader/>
                 <UserList/>
             </div>
         );

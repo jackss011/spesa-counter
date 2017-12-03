@@ -1,0 +1,59 @@
+
+.user-pane
+    +pane
+    +flex(column, flex-start, stretch)
+    +size(50vmin)
+//
+
+
+.user-header
+    +flex(column, flex-start, stretch)
+    flex-shrink: 0
+    padding: .5rem 1rem
+
+    .label
+        flex-grow: 1
+        color: $text-color
+        font-size: 2rem
+        font-family: Helvetica
+    //
+
+    .top-row
+        +flex(row)
+    //
+
+    button
+        +button-concrete($green-add)
+
+        &.cancel
+            +button-ghost($red-cancel)
+//
+
+
+form.add-user
+    +flex
+    margin: 0
+    margin-top: 10px
+    margin-bottom: 3px
+
+    input[name="name"]
+        +size(auto)
+        //+flex(row, center, center)
+        min-width: 0
+        flex-grow: 1
+        flex-shrink: 1
+        border-radius: 0 3px 3px 0
+
+    input[name="id"]
+        font-weight: bold
+        border-radius: 3px 0 0 3px
+        box-sizing: content-box
+        width: 1em
+        text-transform: capitalize
+
+    input[type=submit]
+        +button-concrete($green-add)
+        font-size: .9rem
+        align-self: stretch
+        margin-left: .5em
+//

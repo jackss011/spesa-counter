@@ -1,0 +1,76 @@
+
+$BORDER_SMALL: 1px solid #ccc
+$BORDER_MEDIUM: 1px solid #bbb
+$BORDER_HEAVY: 1px solid #aaa
+
+
+=size($x, $y: $x)
+    width: $x
+    height: $y
+//
+
+
+=flex($dir: row, $just: flex-start, $align: center)
+    display: flex
+    flex-direction: $dir
+    justify-content: $just
+    align-items: $align
+//
+
+
+=pane
+    display: block
+    border-radius: 3px
+    background-color: white
+    border: $BORDER_MEDIUM
+//
+
+
+=list
+    overflow-y: auto
+
+    ul
+        +flex(column, flex-start, stretch)
+        margin: 0
+        padding: 0
+//
+
+
+=row
+    +flex(row)
+    align-items: center
+    padding: .4em .8em
+    border-bottom: $BORDER_SMALL
+//
+
+
+=row-margin($margin)
+    *
+        margin-right: $margin
+
+        &:last-child
+            margin-right: 0
+//
+
+
+input[type="text"]
+    color: $text-color
+    font-size: .9rem
+    border: $BORDER_SMALL
+    border-radius: 3px
+    padding: .5em
+//
+
+
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar
+    width: 5px
+    height: 5px
+
+::-webkit-scrollbar-track
+    background: rgba(0, 0, 0, 0.05)
+
+::-webkit-scrollbar-thumb
+    background: rgba(0, 0, 0, 0.12)

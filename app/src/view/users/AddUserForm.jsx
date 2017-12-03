@@ -14,14 +14,16 @@ class AddUserForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={e => this.onSubmit(e)}>
+            <form onSubmit={e => this.onSubmit(e)} className="add-user">
                 <input
+                    name="id"
                     type="text"
                     ref={input => this.firstInput = input}
                     value={this.state.id}
                     onChange={e => this.onIdChange(e)}
                 />
                 <input
+                    name="name"
                     type="text"
                     placeholder="Insert name"
                     value={this.state.name}
