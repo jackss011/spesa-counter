@@ -1,6 +1,7 @@
 import React from 'react'
 
 import SpecLabel from 'view/specs/SpecLabel'
+import PriceLabel from 'view/generic/PriceLabel'
 
 
 class EntryListRow extends React.Component {
@@ -9,10 +10,8 @@ class EntryListRow extends React.Component {
 
         return (
             <li className="entry-list-row">
-                <div className="price">
-                    {entry.price}
-                </div>
-                
+                <PriceLabel price={entry.getPrice()}/>
+
                 {this.specs()}
             </li>
         );

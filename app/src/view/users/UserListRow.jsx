@@ -1,6 +1,7 @@
 import React from 'react'
 
 import IdLabel from 'view/specs/IdLabel'
+import PriceLabel from 'view/generic/PriceLabel'
 
 
 class UserListRow extends React.Component {
@@ -12,7 +13,7 @@ class UserListRow extends React.Component {
             <li className="user-list-row">
                 <IdLabel id={user.id}/>
                 <div className="name">{user.name}</div>
-                <div className="share">{share.toFixed(2)}</div>
+                <PriceLabel price={share}/>
             </li>
         );
     }
