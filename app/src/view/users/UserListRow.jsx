@@ -12,7 +12,7 @@ class UserListRow extends React.Component {
             <li className="user-list-row">
                 <IdLabel id={user.id}/>
                 <div className="name">{user.name}</div>
-                <div className="share">{share}</div>
+                <div className="share">{share.toFixed(2)}</div>
             </li>
         );
     }
