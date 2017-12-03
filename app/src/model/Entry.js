@@ -46,6 +46,13 @@ export class Spec {
         let ids = this.ids.reduce((acc, curr) => acc + curr, '');
         return ids + times;
     }
+
+    static fromJSON(json) {
+        let spec = new Spec();
+        spec.setTimes(json.times);
+        json.ids.forEach(id => spec.addId(id));
+        return spec;
+    }
 }
 
 
@@ -91,6 +98,8 @@ export class Entry {
     }
 
     setPrice(p) {
+        if(!p) return;
+        
         this.price = p;
     }
 
@@ -100,6 +109,10 @@ export class Entry {
 
     specsToString() {
         return this.specs.reduce((acc, curr) => acc + curr.toString(), '');
+    }
+
+    toString() {
+        return this.getPrice() + this.specsToString();
     }
 
     getSpecs() {
@@ -125,5 +138,12 @@ export class Entry {
         })
 
         return shares;
+    }
+
+    static fromJSON(json) {
+        let entry = new Entry();
+        entry.setPrice(json.price);
+        json.specs.forEach( spec => entry.addSpec(Spec.fromJSON(spec)) );
+        return entry;
     }
 }
