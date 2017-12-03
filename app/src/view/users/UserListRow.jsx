@@ -1,5 +1,7 @@
 import React from 'react'
 
+import IdLabel from 'view/specs/IdLabel'
+
 
 class UserListRow extends React.Component {
     render() {
@@ -7,10 +9,10 @@ class UserListRow extends React.Component {
         const share = this.props.share;
 
         return (
-            <li>
-                <div>{user.id}</div>
-                <div>{user.name}</div>
-                <div>{share}</div>
+            <li className="user-list-row">
+                <IdLabel id={user.id}/>
+                <div className="name">{user.name}</div>
+                <div className="share">{share}</div>
             </li>
         );
     }
