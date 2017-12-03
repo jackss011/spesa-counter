@@ -9,7 +9,10 @@ class EntryListRow extends React.Component {
 
         return (
             <li className="entry-list-row">
-                <div>{entry.price}</div>
+                <div className="price">
+                    {entry.price}
+                </div>
+                
                 {this.specs()}
             </li>
         );

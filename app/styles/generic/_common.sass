@@ -26,6 +26,16 @@ $BORDER_HEAVY: 1px solid #aaa
 //
 
 
+=list
+    overflow-y: auto
+
+    ul
+        +flex(column, flex-start, stretch)
+        margin: 0
+        padding: 0
+//
+
+
 =row
     +flex(row)
     align-items: center
@@ -50,3 +60,17 @@ input[type="text"]
     border-radius: 3px
     padding: .5em
 //
+
+
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar
+    width: 5px
+    height: 5px
+
+::-webkit-scrollbar-track
+    background: rgba(0, 0, 0, 0.05)
+
+::-webkit-scrollbar-thumb
+    background: rgba(0, 0, 0, 0.12)
