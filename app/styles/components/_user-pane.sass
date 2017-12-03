@@ -1,5 +1,32 @@
 
+.user-pane
+    +pane
+    +flex(column, flex-start, stretch)
+    +size(50vmin)
+//
+
+
+.user-header
+    padding: .5rem 1rem
+
+    .label
+        flex-grow: 1
+        color: $text-color
+        font-size: 2rem
+        font-family: Helvetica
+    //
+
+    .top-row
+        +flex(row)
+    //
+
+    button
+        +button-concrete($green-add)
+//
+
+
 form.add-user
     +flex
 
     input[name="id"]
+//

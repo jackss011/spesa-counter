@@ -1,0 +1,13 @@
+=button-concrete($color)
+    outline: none
+    +flex(row, center, center)
+    border: none
+    background-color: $color
+    font-size: 1rem
+    font-weight: bold
+    color: white
+    padding: .5em .8em
+    border-radius: 3px
+
+    &:hover
+        background-color: darken($color, 10)
