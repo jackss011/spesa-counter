@@ -2,8 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import {ActionGenerator} from 'redux/actions'
-import EntryList from './entries/EntryList'
-import EntryInputBox from './entries/EntryInputBox'
+import EntryPane from './entries/EntryPane'
 import UserPane from './users/UserPane'
 
 
@@ -14,9 +13,8 @@ class App extends React.Component {
 
     render() {
         return (
-            <div>
-                <EntryList/>
-                <EntryInputBox/>
+            <div className="main-pane">
+                <EntryPane/>
                 <UserPane/>
             </div>
         );

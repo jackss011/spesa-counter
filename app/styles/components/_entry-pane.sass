@@ -1,0 +1,23 @@
+
+.entry-pane
+    +flex(column, flex-start, stretch)
+    +pane
+    +size(50vmin)
+
+    .entry-list
+        flex-shrink: 1
+        border-top: $BORDER_MEDIUM
+
+
+
+.entry-header
+    +flex(column, flex-start, stretch)
+    flex-shrink: 0
+    padding: .5rem 1rem
+
+    .label
+        flex-grow: 1
+        color: $text-color
+        font-size: 2rem
+        font-family: Helvetica
+    //
