@@ -19,7 +19,6 @@ $BORDER_HEAVY: 1px solid #aaa
 
 
 =pane
-    display: block
     border-radius: 3px
     background-color: white
     border: $BORDER_MEDIUM
@@ -45,7 +44,7 @@ $BORDER_HEAVY: 1px solid #aaa
 
 
 =row-margin($margin)
-    *
+    &>*
         margin-right: $margin
 
         &:last-child
@@ -59,6 +58,12 @@ input[type="text"]
     border: $BORDER_SMALL
     border-radius: 3px
     padding: .5em
+//
+
+
+.flex-space
+    flex-grow: 1
+    flex-shrink: 1
 //
 
 

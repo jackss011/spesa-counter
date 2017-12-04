@@ -29,11 +29,14 @@ class AddUserForm extends React.Component {
                     value={this.state.name}
                     onChange={e => this.onNameChange(e)}
                 />
-                <input
+                <button
                     type="submit"
                     value="Add"
                     disabled={this.hasValidUser() ? false : true}
-                />
+                    className="material-icons"
+                >
+                    keyboard_arrow_right
+                </button>
             </form>
         );
     }

@@ -2,7 +2,7 @@
 .user-pane
     +pane
     +flex(column, flex-start, stretch)
-    +size(50vmin)
+    min-width: 400px
 //
 
 
@@ -23,7 +23,9 @@
     //
 
     button
-        +button-concrete($green-add)
+        &.add
+            +button-concrete($green-add)
+            padding: .25em
 
         &.cancel
             +button-ghost($red-cancel)
@@ -31,7 +33,7 @@
 
 
 form.add-user
-    +flex
+    +flex(row, flex-start, stretch)
     margin: 0
     margin-top: 10px
     margin-bottom: 3px
@@ -42,7 +44,7 @@ form.add-user
         min-width: 0
         flex-grow: 1
         flex-shrink: 1
-        border-radius: 0 3px 3px 0
+        border-radius: 0
 
     input[name="id"]
         font-weight: bold
@@ -51,9 +53,10 @@ form.add-user
         width: 1em
         text-transform: capitalize
 
-    input[type=submit]
+    button[type=submit]
         +button-concrete($green-add)
-        font-size: .9rem
+        border-radius: 0 3px 3px 0
+        padding: .5em
+        font-size: 1rem
         align-self: stretch
-        margin-left: .5em
 //

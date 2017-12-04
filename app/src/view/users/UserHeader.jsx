@@ -18,7 +18,10 @@ class UserHeader extends React.Component {
                         onClick={e => this.onAddUser()}
                         className={!displayForm ? 'add' : 'cancel'}
                     >
-                        {!displayForm ? 'Add' : 'Cancel'}
+                        {!displayForm
+                            ? <i className="material-icons">add</i> 
+                            : 'Cancel'
+                        }
                     </button>
                 </div>
 

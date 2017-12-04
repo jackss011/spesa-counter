@@ -17,12 +17,21 @@ class EntryInputBox extends React.Component {
 
     render() {
         return (
-            <input
-                type='text'
-                value={this.state.value}
-                onChange={e => this.onChange(e)}
-                onKeyDown={e => this.onKeyDown(e)}
-            />
+            <div className="entry-inputbox">
+                <input
+                    type='text'
+                    placeholder="Insert entry here"
+                    value={this.state.value}
+                    onChange={e => this.onChange(e)}
+                    onKeyDown={e => this.onKeyDown(e)}
+                />
+                <button
+                    disabled={this.state.entry ? false : true}
+                    onClick={e => this.addEntry()}
+                >
+                    <div className="material-icons">keyboard_arrow_right</div>
+                </button>
+            </div>
         );
     }
 
@@ -33,7 +42,12 @@ class EntryInputBox extends React.Component {
     }
 
     onKeyDown(event) {
-        if(event.key === 'Enter' && this.state.entry) {
+        if(event.key === 'Enter')
+            this.addEntry();
+    }
+
+    addEntry() {
+        if(this.state.entry) {
             this.props.onAddEntry(this.state.entry);
             this.reset();
         }

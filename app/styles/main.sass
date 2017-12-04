@@ -5,6 +5,7 @@
 @import components/specs
 @import components/price-label
 @import components/entry-list
+@import components/entry-pane
 @import components/user-list
 @import components/user-pane
 
@@ -14,7 +15,14 @@ body
     color: $text-color
     font-size: 1rem
     font-family: 'Helvetica'
+//
 
 
 ::root
     font-size: 20px
+//
+
+
+.main-pane
+    +flex(row, flex-start, flex-start)
+    +row-margin(.8em)
