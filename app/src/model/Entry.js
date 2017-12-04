@@ -146,7 +146,7 @@ export class Entry {
         this.specs.forEach(spec => {
             if(spec.hasId(id)) hasId = true
         });
-        
+
         return hasId;
     }
 

@@ -16,7 +16,7 @@ class SpecLabel extends React.Component {
     }
 
     ids() {
-        return this.props.spec.getIds().map(id => <IdLabel id={id}/>);
+        return this.props.spec.getIds().map(id => <IdLabel key={id} id={id}/>);
     }
 }
 

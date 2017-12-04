@@ -18,7 +18,7 @@ class EntryListRow extends React.Component {
     }
 
     specs() {
-        return this.props.entry.getSpecs().map(spec => <SpecLabel spec={spec}/>);
+        return this.props.entry.getSpecs().map(spec => <SpecLabel key={spec.toString()} spec={spec}/>);
     }
 }
 
