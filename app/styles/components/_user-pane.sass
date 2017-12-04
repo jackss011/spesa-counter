@@ -20,11 +20,16 @@
 
     .top-row
         +flex(row)
+        +row-margin(.5em)
     //
 
     button
         &.add
             +button-concrete($green-add)
+            padding: .25em
+
+        &.edit
+            +button-concrete($gray-edit)
             padding: .25em
 
         &.cancel

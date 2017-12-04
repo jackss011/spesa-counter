@@ -8,9 +8,13 @@ export const ActionTypes = {
 
     ADD_USER: 'ADD_USER',
     SET_USERS: 'SET_USERS',
+    DELETE_USER: 'DELETE_USER',
 
     UI_DISPLAY_ADD_USER: 'UI_DISPLAY_ADD_USER',
     UI_TOGGLE_ADD_USER: 'UI_TOGGLE_ADD_USER',
+
+    UI_EDIT_USERS: 'UI_EDIT_USERS',
+    UI_TOGGLE_EDIT_USERS: 'UI_TOGGLE_EDIT_USERS',
 }
 
 
@@ -53,6 +57,14 @@ export class ActionGenerator {
         return {type: ActionTypes.SET_USERS, users};
     }
 
+    static deleteUser(id) {
+        return (dispatch, getState) => {
+            dispatch({type: ActionTypes.DELETE_USER, id});
+
+            Storage.saveUsers(getState().users);
+        }
+    }
+
 
     static UI_displayAddUserForm(display) {
         return {type: ActionTypes.UI_DISPLAY_ADD_USER, display};
@@ -60,5 +72,14 @@ export class ActionGenerator {
 
     static UI_toggleAddUserForm() {
         return {type: ActionTypes.UI_TOGGLE_ADD_USER};
+    }
+
+
+    static UI_editUsers(edit) {
+        return {type: ActionTypes.UI_EDIT_USERS, edit};
+    }
+
+    static UI_toggleEditUsers() {
+        return {type: ActionTypes.UI_TOGGLE_EDIT_USERS};
     }
 }
