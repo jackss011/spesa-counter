@@ -4,7 +4,8 @@
     font-size: 1rem
     border-radius: 3px
 
-    transition: background-color 0.2s
+    transition: background-color 0.2s, color 0.2s
+
 
 =button-concrete($color)
     +button-base
@@ -14,8 +15,16 @@
     color: white
     padding: .5em .8em
 
+    &:disabled
+        color: $font-disable-color
+        background-color: $background-disable-color
+
     &:hover
         background-color: darken($color, 10)
+
+        &:disabled
+        background-color: $background-disable-color
+//
 
 
 =button-ghost($color)
