@@ -62,6 +62,7 @@ export class ActionGenerator {
             dispatch({type: ActionTypes.DELETE_USER, id});
 
             Storage.saveUsers(getState().users);
+            Storage.saveEntries(getState().entries)
         }
     }
 

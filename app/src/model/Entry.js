@@ -99,7 +99,7 @@ export class Entry {
 
     setPrice(p) {
         if(!p) return;
-        
+
         this.price = p;
     }
 
@@ -138,6 +138,16 @@ export class Entry {
         })
 
         return shares;
+    }
+
+    hasId(id) {
+        let hasId = false;
+
+        this.specs.forEach(spec => {
+            if(spec.hasId(id)) hasId = true
+        });
+        
+        return hasId;
     }
 
     static fromJSON(json) {

@@ -20,3 +20,15 @@ export function calculateShares(users, entries) {
 
     return shares;
 }
+
+
+export function deleteAllEntriesWithId(entries, id) {
+
+    Object.entries(entries).forEach( ([aid, entry]) => {
+        if(entry.hasId(id)) {
+            delete entries[aid];
+        }
+    });
+
+    return entries;
+}

@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 import {ActionTypes} from './actions'
 import {Storage} from 'model/Storage'
+import {deleteAllEntriesWithId} from './helpers'
 
 
 function entries(state = {}, action) {
@@ -10,6 +11,12 @@ function entries(state = {}, action) {
 
         case ActionTypes.SET_ENTRIES:
             return Object.assign({}, action.entries);
+
+        case ActionTypes.DELETE_USER:
+            let id = action.id;
+            let entries = Object.assign({}, state);
+            deleteAllEntriesWithId(entries, id);
+            return entries;
 
         default:
             return state;
