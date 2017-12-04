@@ -10,7 +10,10 @@ class SpecLabel extends React.Component {
         return (
             <div className="spec-label">
                 {this.ids()}
-                <div className="">{`x${spec.getTimes()}`}</div>
+                <div>
+                    <span className="times">x</span>
+                    {spec.getTimes()}
+                </div>
             </div>
         )
     }
