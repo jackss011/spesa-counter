@@ -23,7 +23,9 @@
     //
 
     button
-        +button-concrete($green-add)
+        &.add
+            +button-concrete($green-add)
+            padding: .25em
 
         &.cancel
             +button-ghost($red-cancel)

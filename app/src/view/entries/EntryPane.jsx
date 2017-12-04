@@ -11,6 +11,7 @@ class EntriesPane extends React.Component {
             <div className="entry-pane">
                 <EntryHeader/>
                 <EntryList/>
+                <div className="flex-space"/>
                 <EntryInputBox/>
             </div>
         )

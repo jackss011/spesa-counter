@@ -23,3 +23,22 @@
         font-size: 2rem
         font-family: Helvetica
     //
+//
+
+
+.entry-inputbox
+    +flex
+    border-top: $BORDER_HEAVY
+
+    input
+        flex-grow: 1
+        border-radius: 0
+        border: none
+    //
+
+    button
+        +button-concrete($green-add)
+        align-self: stretch
+        border-radius: 0
+        padding: .5em
+//
