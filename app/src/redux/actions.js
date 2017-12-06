@@ -41,7 +41,11 @@ export class ActionGenerator {
     }
 
     static setEntries(entries) {
-        return {type: ActionTypes.SET_ENTRIES, entries};
+        return (dispatch, getState) => {
+            dispatch({type: ActionTypes.SET_ENTRIES, entries});
+
+            Storage.saveEntries(getState().entries);
+        }
     }
 
 
