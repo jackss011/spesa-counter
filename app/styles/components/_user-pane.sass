@@ -3,6 +3,7 @@
     +pane
     +flex(column, flex-start, stretch)
     min-width: 400px
+    min-height: 400px
 //
 
 
@@ -20,12 +21,15 @@
 
     .top-row
         +flex(row)
+        +row-margin(.5em)
     //
 
     button
         &.add
-            +button-concrete($green-add)
-            padding: .25em
+            +button-icon($green-add)
+
+        &.edit
+            +button-icon($gray-edit)
 
         &.cancel
             +button-ghost($red-cancel)

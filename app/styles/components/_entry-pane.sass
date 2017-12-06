@@ -13,7 +13,8 @@
 
 
 .entry-header
-    +flex(column, flex-start, stretch)
+    +flex(row)
+    +row-margin(.5em)
     flex-shrink: 0
     padding: .5rem 1rem
 
@@ -23,6 +24,14 @@
         font-size: 2rem
         font-family: Helvetica
     //
+
+    button
+        &.edit
+            +button-icon($gray-edit)
+        &.clear
+            +button-icon($red-remove)
+        &.cancel
+            +button-ghost($red-cancel)
 //
 
 
@@ -34,6 +43,8 @@
         flex-grow: 1
         border-radius: 0
         border: none
+        outline: none
+        font-size: 1.2em
     //
 
     button
