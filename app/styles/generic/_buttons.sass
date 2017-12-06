@@ -26,6 +26,18 @@
             background-color: $background-disable-color
 //
 
+=button-square
+    padding: .2em
+//
+
+
+=button-icon($color, $font-size: null)
+    +button-concrete($color)
+    +button-square
+    i
+        font-size: $font-size
+//
+
 
 =button-ghost($color)
     +button-base
