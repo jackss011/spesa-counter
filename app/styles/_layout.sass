@@ -20,7 +20,15 @@
     min-width: 400px
 //
 
-@media screen and (orientation: portrait)
+$mobile: 'only screen and (orientation: portrait)'
+
+@media #{$mobile}
     .user-pane, .entry-pane
         flex-grow: 1
+
+    .user-pane
+        height: 50%
+
+    html
+        font-size: 45px
 //
