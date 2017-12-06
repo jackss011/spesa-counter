@@ -1,4 +1,5 @@
 import {Storage} from 'model/Storage'
+import {isObjectEmpty} from 'model/utils'
 
 export const ActionTypes = {
     INIT: 'INIT',
@@ -56,6 +57,9 @@ export class ActionGenerator {
             dispatch({type: ActionTypes.DELETE_ENTRY, id});
 
             Storage.saveEntries(getState().entries);
+
+            if(getState().ui.editEntries && isObjectEmpty(getState().entries))
+                dispatch(ActionGenerator.UI_editEntries(false));
         }
     }
 
@@ -77,7 +81,10 @@ export class ActionGenerator {
             dispatch({type: ActionTypes.DELETE_USER, id});
 
             Storage.saveUsers(getState().users);
-            Storage.saveEntries(getState().entries)
+            Storage.saveEntries(getState().entries);
+
+            if(getState().ui.editUsers && isObjectEmpty(getState().users))
+                dispatch(ActionGenerator.UI_editUsers(false));
         }
     }
 
