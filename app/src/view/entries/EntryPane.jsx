@@ -1,21 +1,40 @@
 import React from 'react'
+import {connect} from 'react-redux'
 
 import EntryList from './EntryList'
 import EntryHeader from './EntryHeader'
 import EntryInputBox from './EntryInputBox'
+import InfoText from 'view/generic/InfoText'
+import {isObjectEmpty} from 'model/utils'
 
 
-class EntriesPane extends React.Component {
+class EntryPane extends React.Component {
     render() {
+        const showList = this.props.hasEntries;
+        const hasUsers = this.props.hasUsers;
+
         return (
             <div className="entry-pane">
                 <EntryHeader/>
-                <EntryList/>
-                <div className="flex-space"/>
+                {showList && <EntryList/>}
+                {showList && <div className="flex-space"/>}
+                {!showList &&
+                    <InfoText text={hasUsers
+                        ? 'No entries yet'
+                        : 'Add at least one user before adding entries'}
+                    />
+                }
                 <EntryInputBox/>
             </div>
         )
     }
 }
 
-export default EntriesPane
+function mapStateToProps({entries, users}) {
+    return {
+        hasEntries: !isObjectEmpty(entries),
+        hasUsers: !isObjectEmpty(users),
+    };
+}
+
+export default connect(mapStateToProps)(EntryPane);

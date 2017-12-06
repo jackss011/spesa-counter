@@ -5,9 +5,11 @@
     height: 100%
     min-width: 400px
 
+    .entry-header
+        border-bottom: $BORDER_MEDIUM
+
     .entry-list
         flex-shrink: 1
-        border-top: $BORDER_MEDIUM
     //
 //
 
@@ -29,7 +31,7 @@
         &.edit
             +button-icon($gray-edit)
         &.clear
-            +button-icon($red-remove)
+            +button-icon($red-clear)
         &.cancel
             +button-ghost($red-cancel)
 //
@@ -45,6 +47,11 @@
         border: none
         outline: none
         font-size: 1.2em
+
+        &:disabled
+            background-color: #ddd
+
+        transition: background-color 0.3s
     //
 
     button
