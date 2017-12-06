@@ -34,6 +34,11 @@
 =button-icon($color, $font-size: null)
     +button-concrete($color)
     +button-square
+    &:disabled
+        color: $disable-icon-color
+        background-color: $disable-icon-bg-color
+        &:hover
+            background-color: $disable-icon-bg-color
     i
         font-size: $font-size
 //
