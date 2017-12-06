@@ -15,6 +15,8 @@ export const ActionTypes = {
 
     UI_EDIT_USERS: 'UI_EDIT_USERS',
     UI_TOGGLE_EDIT_USERS: 'UI_TOGGLE_EDIT_USERS',
+
+    UI_EDIT_ENTRIES: 'UI_EDIT_ENTRIES',
 }
 
 
@@ -86,5 +88,9 @@ export class ActionGenerator {
 
     static UI_toggleEditUsers() {
         return {type: ActionTypes.UI_TOGGLE_EDIT_USERS};
+    }
+
+    static UI_editEntries(edit) {
+        return {type: ActionTypes.UI_EDIT_ENTRIES, edit};
     }
 }

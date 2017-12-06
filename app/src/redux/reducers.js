@@ -46,6 +46,7 @@ function users(state = {}, action) {
 const uiInitState = {
     displayAddUserForm: false,
     editUsers: false,
+    editEntries: false
 }
 
 function ui(state = uiInitState, action) {
@@ -58,10 +59,14 @@ function ui(state = uiInitState, action) {
 
 
         case ActionTypes.UI_EDIT_USERS:
-            return Object.assign({}, state, {editUsers: action.edit})
+            return Object.assign({}, state, {editUsers: action.edit});
 
         case ActionTypes.UI_TOGGLE_EDIT_USERS:
-            return Object.assign({}, state, {editUsers: !state.editUsers})
+            return Object.assign({}, state, {editUsers: !state.editUsers});
+
+
+        case ActionTypes.UI_EDIT_ENTRIES:
+            return Object.assign({}, state, {editEntries: action.edit});
 
 
         default:
