@@ -5,6 +5,7 @@ export const ActionTypes = {
 
     ADD_ENTRY: 'ADD_ENTRY',
     SET_ENTRIES: 'SET_ENTRIES',
+    DELETE_ENTRY: 'DELETE_ENTRY',
 
     ADD_USER: 'ADD_USER',
     SET_USERS: 'SET_USERS',
@@ -45,6 +46,14 @@ export class ActionGenerator {
     static setEntries(entries) {
         return (dispatch, getState) => {
             dispatch({type: ActionTypes.SET_ENTRIES, entries});
+
+            Storage.saveEntries(getState().entries);
+        }
+    }
+
+    static deleteEntry(id) {
+        return (dispatch, getState) => {
+            dispatch({type: ActionTypes.DELETE_ENTRY, id});
 
             Storage.saveEntries(getState().entries);
         }

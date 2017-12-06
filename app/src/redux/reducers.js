@@ -18,6 +18,11 @@ function entries(state = {}, action) {
             deleteAllEntriesWithId(entries, id);
             return entries;
 
+        case ActionTypes.DELETE_ENTRY:
+            let mid = Object.assign({}, state);
+            delete mid[action.id];
+            return mid;
+
         default:
             return state;
     }
