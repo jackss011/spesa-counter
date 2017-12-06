@@ -1,0 +1,25 @@
+.main
+    +flex(column, flex-start, flex-start)
+    height: 100%
+
+.main-pane
+    +flex(row, flex-start, flex-start)
+    flex-grow: 1
+    margin: .7rem
+    +row-margin(.8em)
+//
+
+
+.entry-pane
+    align-self: stretch
+    min-width: 400px
+//
+
+.user-pane
+    min-height: 100px
+    min-width: 400px
+//
+
+@media screen and (orientation: portrait)
+    body
+        background-color: red
