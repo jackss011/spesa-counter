@@ -11,17 +11,18 @@ class UserHeader extends React.Component {
         const displayForm = this.props.displayForm;
         const edit = this.props.edit;
         const displayCancel = displayForm || edit;
-        const displayEdit = !displayCancel && this.props.hasUsers;
+        const canEdit = this.props.hasUsers;
 
         return (
             <div className="user-header">
                 <div className="top-row">
                     <div className="label">Users</div>
 
-                    {displayEdit &&
+                    {!displayCancel &&
                         <button
                             onClick={e => this.onEditUsers()}
                             className="edit"
+                            disabled={!canEdit}
                         >
                             <i className="material-icons">edit</i>
                         </button>
