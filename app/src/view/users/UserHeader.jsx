@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+import {isObjectEmpty} from 'model/utils'
 import {ActionGenerator} from 'redux/actions'
 import AddUserForm from './AddUserForm'
 
@@ -10,13 +11,14 @@ class UserHeader extends React.Component {
         const displayForm = this.props.displayForm;
         const edit = this.props.edit;
         const displayCancel = displayForm || edit;
+        const displayEdit = !displayCancel && this.props.hasUsers;
 
         return (
             <div className="user-header">
                 <div className="top-row">
                     <div className="label">Users</div>
 
-                    {!displayCancel &&
+                    {displayEdit &&
                         <button
                             onClick={e => this.onEditUsers()}
                             className="edit"
@@ -64,10 +66,11 @@ class UserHeader extends React.Component {
 }
 
 
-function mapStateToProps({ui}) {
+function mapStateToProps({users, ui}) {
     return {
         displayForm: ui.displayAddUserForm,
         edit: ui.editUsers,
+        hasUsers: !isObjectEmpty(users),
     };
 }
 
