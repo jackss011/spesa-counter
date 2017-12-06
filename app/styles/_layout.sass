@@ -1,5 +1,5 @@
 .main
-    +flex(column, flex-start, flex-start)
+    +flex(column, flex-start, stretch)
     height: 100%
 
 .main-pane
@@ -16,10 +16,11 @@
 //
 
 .user-pane
-    min-height: 100px
+    min-height: 400px
     min-width: 400px
 //
 
 @media screen and (orientation: portrait)
-    body
-        background-color: red
+    .user-pane, .entry-pane
+        flex-grow: 1
+//
