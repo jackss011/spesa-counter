@@ -23,3 +23,8 @@ export function getRandomInt(max) {
 export function mapEntries(obj, mapper) {
     return Object.entries(obj).map(([id, value]) => mapper(id, value));
 }
+
+
+export function isObjectEmpty(obj) {
+    return Object.entries(obj).length === 0;
+}
