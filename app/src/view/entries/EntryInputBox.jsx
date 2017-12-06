@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import {parseEntry} from 'model/parser'
 import {Entry} from 'model/Entry'
 import {ActionGenerator} from 'redux/actions'
-import {makeRandomId} from 'model/utils'
+import {makeRandomId, isObjectEmpty} from 'model/utils'
 import {existUserId} from 'redux/helpers'
 
 
@@ -16,14 +16,19 @@ class EntryInputBox extends React.Component {
     }
 
     render() {
+        const canEdit = this.props.hasUsers;
+
         return (
             <div className="entry-inputbox">
                 <input
                     type='text'
-                    placeholder="Insert entry here"
+                    placeholder={
+                        canEdit ? 'Insert entry here' : 'Add some user first'
+                    }
                     value={this.state.value}
                     onChange={e => this.onChange(e)}
                     onKeyDown={e => this.onKeyDown(e)}
+                    disabled={!canEdit}
                 />
                 <button
                     disabled={this.state.entry ? false : true}
@@ -59,9 +64,10 @@ class EntryInputBox extends React.Component {
 }
 
 
-function mapStateToProps(state) {
+function mapStateToProps({users}) {
     return {
-        validId: id => existUserId(state.users, id)
+        validId: id => existUserId(users, id),
+        hasUsers: !isObjectEmpty(users),
     }
 }
 
