@@ -21,15 +21,13 @@
 //
 
 
-@media #{$mobile}
+@media #{$is-mobile}
     .user-pane, .entry-pane
         flex-grow: 1
+        min-width: 0
 
     .user-pane
         height: 50%
-
-    html
-        font-size: 42px
 
     .main-pane
         margin: 0.35rem
