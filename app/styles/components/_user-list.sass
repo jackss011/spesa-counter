@@ -1,5 +1,6 @@
 
 .user-list
+    +flex(column, flex-start, stretch)
     flex-grow: 1
     margin: 0
     padding: 0
@@ -25,3 +26,16 @@
         font-size: 1.3em
     //
 //
+
+
+.total-label
+    +flex(row, flex-start, center)
+    border-top: $BORDER-HEAVY
+    font-size: 1.3rem
+    padding: .4em .5em
+
+    .label
+        flex-grow: 1
+
+    .price-label
+        font-size: 1.1em
