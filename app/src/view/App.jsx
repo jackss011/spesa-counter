@@ -4,10 +4,11 @@ import {connect} from 'react-redux'
 import {ActionGenerator} from 'redux/actions'
 import {isPortrait} from 'model/layout';
 
+import If from 'view/generic/If'
+import TabSelector from 'view/tab/TabSelector'
 import Header from './Header'
 import EntryPane from './entries/EntryPane'
 import UserPane from './users/UserPane'
-import If from 'view/generic/If'
 
 
 class App extends React.Component {
@@ -22,6 +23,8 @@ class App extends React.Component {
         return (
             <div className="main">
                 <Header/>
+
+                {onePane && <TabSelector/>}
 
                 <div className="main-pane">
                     <If if={!onePane}>
