@@ -34,7 +34,7 @@ class EntryInputBox extends React.Component {
                     disabled={this.state.entry ? false : true}
                     onClick={e => this.addEntry()}
                 >
-                    <div className="material-icons">keyboard_arrow_right</div>
+                    <i className="material-icons">keyboard_arrow_right</i>
                 </button>
             </div>
         );
