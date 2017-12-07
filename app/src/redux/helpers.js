@@ -32,3 +32,10 @@ export function deleteAllEntriesWithId(entries, id) {
 
     return entries;
 }
+
+
+export function calculateTotalFromShares(shares) {
+    if(!shares) return 0;
+
+    return Object.entries(shares).reduce( (acc, [id, share]) => acc + share, 0);
+}
