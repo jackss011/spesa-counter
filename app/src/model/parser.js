@@ -14,12 +14,14 @@ export function sanitizePriceRest(str, validIds) {
 export function parsePrice(str) {
     let decon = "";
     let foundDot = false;
+    let firstChar = true;
 
     for(let ch of str) {
         let num = Number(ch);
 
-        if((!isNaN(num) || (ch === '.' && !foundDot)) && ch != ' ') {
+        if(( !isNaN(num) || (ch === '.' && !foundDot) || (ch === '-' && firstChar) ) && ch != ' ') {
             if(ch === '.') foundDot = true;
+            firstChar = false;
             decon += ch;
         }
         else
@@ -97,7 +99,7 @@ export function parseEntry(value, validIds) {
 
     if(value !== '') {
         let priceResult = parsePrice(value);
-        if(!priceResult.price) return {sanitizedValue: "", entry: null}
+        if(!priceResult.price && priceResult.taken !== '-') return {sanitizedValue: "", entry: null}
         entry.setPrice(priceResult.price);
 
         let rest = sanitizePriceRest(priceResult.rest, validIds);
