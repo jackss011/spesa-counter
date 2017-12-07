@@ -32,6 +32,7 @@ class AddUserForm extends React.Component {
                     value={this.state.name}
                     onChange={e => this.onNameChange(e)}
                     autocorrect="off"
+                    autoComplete="off"
                 />
                 <button
                     type="submit"
