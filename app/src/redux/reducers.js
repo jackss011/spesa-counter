@@ -51,7 +51,8 @@ function users(state = {}, action) {
 const uiInitState = {
     displayAddUserForm: false,
     editUsers: false,
-    editEntries: false
+    editEntries: false,
+    selectedPane: 'USERS',
 }
 
 function ui(state = uiInitState, action) {
@@ -72,6 +73,10 @@ function ui(state = uiInitState, action) {
 
         case ActionTypes.UI_EDIT_ENTRIES:
             return Object.assign({}, state, {editEntries: action.edit});
+
+
+        case ActionTypes.UI_SELECT_PANE:
+            return Object.assign({}, state, {selectedPane: action.pane});
 
 
         default:

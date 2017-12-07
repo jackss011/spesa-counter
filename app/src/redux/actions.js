@@ -19,6 +19,8 @@ export const ActionTypes = {
     UI_TOGGLE_EDIT_USERS: 'UI_TOGGLE_EDIT_USERS',
 
     UI_EDIT_ENTRIES: 'UI_EDIT_ENTRIES',
+
+    UI_SELECT_PANE: 'UI_SELECT_PANE',
 }
 
 
@@ -27,10 +29,7 @@ export class ActionGenerator {
         return dispatch => {
             dispatch({type: ActionTypes.INIT});
 
-            //console.log(Storage.getEntries());
             dispatch(ActionGenerator.setEntries(Storage.getEntries()));
-
-            //console.log(Storage.getUsers());
             dispatch(ActionGenerator.setUsers(Storage.getUsers()));
         }
     }
@@ -106,7 +105,13 @@ export class ActionGenerator {
         return {type: ActionTypes.UI_TOGGLE_EDIT_USERS};
     }
 
+
     static UI_editEntries(edit) {
         return {type: ActionTypes.UI_EDIT_ENTRIES, edit};
+    }
+
+
+    static UI_selectPane(pane) {
+        return {type: ActionTypes.UI_SELECT_PANE, pane}
     }
 }

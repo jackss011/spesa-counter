@@ -12,7 +12,7 @@ class EntryPane extends React.Component {
     render() {
         const showList = this.props.hasEntries;
         const hasUsers = this.props.hasUsers;
-
+        // TODO: USE If here
         return (
             <div className="entry-pane">
                 <EntryHeader/>

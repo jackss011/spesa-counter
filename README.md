@@ -9,13 +9,7 @@
 - Connect to **localhost:8080** via browser
 
 ## How to publish
-- Checkout a new branch
-- Build using **npm run build**
-- Run **git add dist -f**
-- Run **git commit -m "v.v.v"**
-- Run **git subtree push --prefix dist origin gh-pages**
-
-Note: It may be required to delete the existing gh-pages branch of the repo
+- Check Firebase deployment guide
 
 ## How to connect
 Go to **www.jackss011.github.io/spesa-counter**

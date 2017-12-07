@@ -2,8 +2,6 @@
 .entry-pane
     +flex(column, flex-start, stretch)
     +pane
-    height: 100%
-    min-width: 400px
 
     .entry-header
         border-bottom: $BORDER_MEDIUM
@@ -39,6 +37,7 @@
 
 .entry-inputbox
     +flex
+    flex-shrink: 0
     border-top: $BORDER_HEAVY
 
     input
@@ -55,8 +54,7 @@
     //
 
     button
-        +button-concrete($green-add)
+        +button-icon($green-add, 2rem)
         align-self: stretch
         border-radius: 0
-        padding: .5em
 //

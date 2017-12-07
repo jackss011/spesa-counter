@@ -38,7 +38,6 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './app/index.template.html',
             filename: 'index.html',
-            title: 'Spesa Counter',
             inject: 'body'
         })
     ],

@@ -1,3 +1,4 @@
+@import generic/media-queries
 @import generic/colors
 @import generic/common
 @import generic/buttons
@@ -5,9 +6,11 @@
 @import components/specs
 @import components/price-label
 @import components/entry-list
+@import components/header
 @import components/entry-pane
 @import components/user-list
 @import components/user-pane
+@import components/tab
 
 
 body
@@ -16,15 +19,17 @@ body
     font-size: 1rem
     font-family: 'Helvetica'
     cursor: default
+    margin: 0
+    height: 100%
+//
+
+#root
+    height: 100%
+
+html
+    font-size: 16px
+    height: 100%
 //
 
 
-::root
-    font-size: 20px
-//
-
-
-.main-pane
-    +flex(row, flex-start, flex-start)
-    +row-margin(.8em)
-//
+@import layout
