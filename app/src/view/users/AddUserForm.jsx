@@ -22,7 +22,7 @@ class AddUserForm extends React.Component {
                     value={this.state.id}
                     onChange={e => this.onIdChange(e)}
                     autocapitalize="off"
-                    autocorrect="off"
+                    autoCorrect="off"
                     autoComplete="off"
                 />
                 <input
@@ -31,7 +31,7 @@ class AddUserForm extends React.Component {
                     placeholder="Insert name"
                     value={this.state.name}
                     onChange={e => this.onNameChange(e)}
-                    autocorrect="off"
+                    autoCorrect="off"
                     autoComplete="off"
                 />
                 <button
