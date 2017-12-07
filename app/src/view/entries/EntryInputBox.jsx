@@ -29,6 +29,8 @@ class EntryInputBox extends React.Component {
                     onChange={e => this.onChange(e)}
                     onKeyDown={e => this.onKeyDown(e)}
                     disabled={!canEdit}
+                    autocapitalize="off"
+                    autocorrect="off"
                 />
                 <button
                     disabled={this.state.entry ? false : true}
