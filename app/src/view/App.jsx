@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import {ActionGenerator} from 'redux/actions'
-import {isPortrait} from 'model/layout';
+import {isMobile} from 'model/layout';
 
 import If from 'view/generic/If'
 import TabSelector from 'view/tab/TabSelector'
@@ -17,7 +17,7 @@ class App extends React.Component {
     }
 
     render() {
-        const onePane = isPortrait();
+        const onePane = isMobile();
         const showEntries = this.props.selectedPane === 'ENTRIES';
 
         return (
