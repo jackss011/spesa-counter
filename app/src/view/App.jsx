@@ -18,7 +18,7 @@ class App extends React.Component {
 
     render() {
         const onePane = isPortrait();
-        const showEntries = this.props.showPane === 'ENTRIES';
+        const showEntries = this.props.selectedPane === 'ENTRIES';
 
         return (
             <div className="main">
@@ -52,7 +52,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps({ui}) {
     return {
-        showPane: ui.showPane
+        selectedPane: ui.selectedPane
     };
 }
 

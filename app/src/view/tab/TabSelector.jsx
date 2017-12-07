@@ -42,4 +42,4 @@ export function mapDispatchToProps(dis) {
     };
 }
 
-export default connect(null, mapDispatchToProps)(TabSelector)
+export default connect(mapStateToProps, mapDispatchToProps)(TabSelector)

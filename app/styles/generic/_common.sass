@@ -4,6 +4,8 @@ $BORDER_MEDIUM: 1px solid #bbb
 $BORDER_HEAVY: 1px solid #aaa
 
 
+$mobile: 'only screen and (orientation: portrait)'
+
 =size($x, $y: $x)
     width: $x
     height: $y
@@ -49,6 +51,15 @@ $BORDER_HEAVY: 1px solid #aaa
 
         &:last-child
             margin-right: 0
+//
+
+
+=row-border($border)
+    &>*
+        border-right: $border
+
+        &:last-child
+            border-right: none
 //
 
 
