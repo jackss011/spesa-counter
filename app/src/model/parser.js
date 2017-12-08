@@ -99,7 +99,8 @@ export function parseEntry(value, validIds) {
 
     if(value !== '') {
         let priceResult = parsePrice(value);
-        if(!priceResult.price && priceResult.taken !== '-') return {sanitizedValue: "", entry: null}
+        if( isNaN(priceResult.price) && priceResult.taken !== '-' )
+            return {sanitizedValue: "", entry: null}
         entry.setPrice(priceResult.price);
 
         let rest = sanitizePriceRest(priceResult.rest, validIds);
