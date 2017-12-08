@@ -28,3 +28,15 @@ export function mapEntries(obj, mapper) {
 export function isObjectEmpty(obj) {
     return Object.entries(obj).length === 0;
 }
+
+
+const RANDOM_COLORS = ['#FF1744', '#1E88E5', '#009688',
+    '#43A047', '#F57C00', '#3949AB', '#FFD600'];
+
+export {RANDOM_COLORS};
+
+export function makeRandomColor() {
+
+
+    return RANDOM_COLORS[getRandomInt(RANDOM_COLORS.length - 1)];
+}
