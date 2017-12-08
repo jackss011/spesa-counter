@@ -30,8 +30,8 @@ export function isObjectEmpty(obj) {
 }
 
 
-const RANDOM_COLORS = ['#FF1744', '#1E88E5', '#009688',
-    '#43A047', '#F57C00', '#3949AB', '#FFD600'];
+const RANDOM_COLORS = ['#3BC3EA', '#FF5349',
+    '#03CEA4', '#ff7f24'];
 
 export {RANDOM_COLORS};
 
