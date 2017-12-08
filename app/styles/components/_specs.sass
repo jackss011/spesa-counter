@@ -1,16 +1,12 @@
 .spec-label
     +flex(row)
     font-size: 1rem
-    background-color: #d2d2d2
-    border-radius: 3px
+    background-color: transparent
+    border-radius: 0.25em
     padding: .2em .4em
-    margin: 0px 5px
     font-weight: bold
 
     +row-margin(.25em)
-
-    *:last-child
-        margin-left: .1em
 
     .times
         color: #999
@@ -19,13 +15,12 @@
 
 
 .id-label
-    +flex(row)
-    justify-content: center
+    +flex(row, center, center)
     font-size: 1rem
-    font-weight: normal
     +size(1.5em)
+    font-weight: normal
     text-transform: capitalize
     padding: 0px
     color: white
     background-color: #777
-    border-radius: 2px
+    border-radius: 0.2em

@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import { ActionGenerator } from 'redux/actions'
 import User from 'model/User'
 import * as reduxHelpers from 'redux/helpers'
+import { makeRandomColor } from 'model/utils'
 
 
 class AddUserForm extends React.Component {
@@ -21,8 +22,8 @@ class AddUserForm extends React.Component {
                     ref={input => this.firstInput = input}
                     value={this.state.id}
                     onChange={e => this.onIdChange(e)}
-                    autocapitalize="off"
-                    autocorrect="off"
+                    autoCapitalize="off"
+                    autoCorrect="off"
                     autoComplete="off"
                 />
                 <input
@@ -31,7 +32,7 @@ class AddUserForm extends React.Component {
                     placeholder="Insert name"
                     value={this.state.name}
                     onChange={e => this.onNameChange(e)}
-                    autocorrect="off"
+                    autoCorrect="off"
                     autoComplete="off"
                 />
                 <button
@@ -69,6 +70,7 @@ class AddUserForm extends React.Component {
         event.preventDefault();
 
         let user = new User(this.state.id, this.state.name);
+        user.color = this.props.getRandomColor();
         this.props.onAddUser(user);
 
         this.reset();
@@ -88,7 +90,8 @@ class AddUserForm extends React.Component {
 
 function mapStateToProps({users}) {
     return {
-        isUserIdUnique: id => !reduxHelpers.existUserId(users, id)
+        isUserIdUnique: id => !reduxHelpers.existUserId(users, id),
+        getRandomColor: () => reduxHelpers.getUniqueUserColor(users),
     };
 }
 

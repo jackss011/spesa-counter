@@ -1,3 +1,5 @@
+import { makeRandomColor, RANDOM_COLORS} from 'model/utils'
+
 
 export function getUserIds(users) {
     return Object.keys(users);
@@ -38,4 +40,29 @@ export function calculateTotalFromShares(shares) {
     if(!shares) return 0;
 
     return Object.entries(shares).reduce( (acc, [id, share]) => acc + share, 0);
+}
+
+
+export function getUserColorById(users, id) {
+    if(!id) return;
+
+    return users[id].color;
+}
+
+
+export function isUserColorUnique(users, color) {
+    return !Object.entries(users)
+        .reduce( (acc, [id, user]) => acc || user.color === color, false );
+}
+
+
+export function getUniqueUserColor(users) {
+    for(let i = 0; i < RANDOM_COLORS.length; i++) {
+        const color = makeRandomColor();
+
+        if(isUserColorUnique(users, color))
+            return color;
+    }
+
+    return makeRandomColor();
 }
