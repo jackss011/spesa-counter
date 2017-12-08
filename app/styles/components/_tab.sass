@@ -1,9 +1,9 @@
 .tab-selector
     +flex(row)
+    align-items: baseline
     flex-shrink: 0
     background-color: white
     border-bottom: $BORDER_HEAVY
-    +row-border($BORDER_MEDIUM)
 //
 
 
@@ -11,7 +11,8 @@
     font-size: 1.15rem
     +flex(row, center, center)
     flex-grow: 1
-    padding: .5em
+    flex-shrink: 0
+    padding: .6em
 
     &.selected
         border-bottom: .15em solid $primary-color
