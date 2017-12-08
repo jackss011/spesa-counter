@@ -3,6 +3,7 @@ export default class User {
     constructor(id, name) {
         this._id = id;
         this._name = name;
+        this._color =  '';
     }
 
     set id(id) {
@@ -15,12 +16,21 @@ export default class User {
         this._name = name;
     }
 
+    set color(color) {
+        if(!color) return;
+        this._color = color;
+    }
+
     get id() {
         return this._id;
     }
 
     get name() {
         return this._name;
+    }
+
+    get color() {
+        return this._color;
     }
 
     static isValidId(id) {
@@ -32,6 +42,7 @@ export default class User {
 
         user.id = json._id;
         user.name = json._name;
+        user.color = json._color;
 
         return user;
     }
