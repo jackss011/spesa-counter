@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-class DeleteLabel extends React.Component {
+class DialogProvider extends React.Component {
     render() {
         const visible = true;
 
@@ -18,4 +18,4 @@ class DeleteLabel extends React.Component {
     }
 }
 
-export default DeleteLabel
+export default DialogProvider
