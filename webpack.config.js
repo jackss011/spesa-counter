@@ -25,6 +25,9 @@ module.exports = {
             }, {
                 test: /\.sass$/,
                 loader: ['style-loader', 'css-loader', 'sass-loader']
+            }, {
+                test: /\.ico$/,
+                loader: 'file-loader?name=[name].[ext]'
             }
         ]
     },
