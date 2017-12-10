@@ -14,10 +14,13 @@ class UserList extends React.Component {
         const total = calculateTotalFromShares(shares);
 
         return (
-            <div className="user-list">
-                <ul>
-                    {this.createUserList(shares)}
-                </ul>
+            <div className="user-list-container">
+                <div className="user-list">
+                    <ul>
+                        {this.createUserList(shares)}
+                    </ul>
+                </div>
+                
                 <div className="flex-space"/>
                 <TotalLabel total={total}/>
             </div>

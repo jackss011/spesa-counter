@@ -11,6 +11,7 @@
 .user-list-row
     +row()
     +row-margin(.5em)
+    flex-shrink: 0
     font-size: 1rem
 
     .delete-label
@@ -30,6 +31,7 @@
 
 .total-label
     +flex(row, flex-start, center)
+    flex-shrink: 0.25
     border-top: $BORDER-HEAVY
     font-size: 1.3rem
     padding: .4em .65em
