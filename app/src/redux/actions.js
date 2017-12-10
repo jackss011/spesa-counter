@@ -12,6 +12,7 @@ export const ActionTypes = {
     SET_USERS: 'SET_USERS',
     DELETE_USER: 'DELETE_USER',
 
+
     UI_DISPLAY_ADD_USER: 'UI_DISPLAY_ADD_USER',
     UI_TOGGLE_ADD_USER: 'UI_TOGGLE_ADD_USER',
 
@@ -21,6 +22,10 @@ export const ActionTypes = {
     UI_EDIT_ENTRIES: 'UI_EDIT_ENTRIES',
 
     UI_SELECT_PANE: 'UI_SELECT_PANE',
+
+
+    DIALOG_CLOSE: 'DIALOG_CLOSE',
+    DIALOG_SHOW_DELETE_USER: 'DIALOG_SHOW_DELETE_USER',
 }
 
 
@@ -113,5 +118,15 @@ export class ActionGenerator {
 
     static UI_selectPane(pane) {
         return {type: ActionTypes.UI_SELECT_PANE, pane}
+    }
+
+
+
+    static Dialog_close() {
+        return {type: ActionTypes.DIALOG_CLOSE};
+    }
+
+    static Dialog_showDeleteUser(id) {
+        return {type: ActionTypes.DIALOG_SHOW_DELETE_USER, id};
     }
 }
