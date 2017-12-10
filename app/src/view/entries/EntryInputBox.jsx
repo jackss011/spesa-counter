@@ -22,6 +22,7 @@ class EntryInputBox extends React.Component {
             <div className="entry-inputbox">
                 <input
                     type='text'
+                    ref={input => this.input = input}
                     placeholder={
                         canEdit ? 'Insert entry here' : 'Add some user first'
                     }
@@ -57,6 +58,7 @@ class EntryInputBox extends React.Component {
         if(this.state.entry) {
             this.props.onAddEntry(this.state.entry);
             this.reset();
+            this.input.focus();
         }
     }
 

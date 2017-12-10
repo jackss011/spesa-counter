@@ -1,4 +1,11 @@
 
+
+.user-list-container
+    +flex(column, flex-start, stretch)
+    flex-grow: 1
+
+
+
 .entry-list
     +list
 
@@ -13,6 +20,7 @@
     font-size: 1rem
 
     .delete-label
+        margin-right: .6em
         +button-icon($red-remove, .8em)
 //
 

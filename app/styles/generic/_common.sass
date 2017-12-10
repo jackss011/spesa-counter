@@ -23,6 +23,12 @@ $BORDER_HEAVY: 1px solid #aaa
     background-color: white
     border: $BORDER_MEDIUM
     overflow: hidden
+
+    @media #{$is-mobile}
+        border-radius: 0
+        border-left: none
+        border-right: none
+        border-top: none
 //
 
 
