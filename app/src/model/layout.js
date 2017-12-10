@@ -4,5 +4,5 @@ export function isPortrait() {
 }
 
 export function isMobile() {
-    return window.matchMedia('(max-width: 600px)').matches;
+    return window.matchMedia('(max-width: 850px)').matches;
 }
