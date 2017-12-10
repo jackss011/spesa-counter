@@ -85,4 +85,19 @@ function ui(state = uiInitState, action) {
 }
 
 
-export default combineReducers({entries, users, ui});
+function mainDialog(state = {}, action) {
+    switch(action.type) {
+        case ActionTypes.DIALOG_SHOW_DELETE_USER:
+            return {type: 'DELETE_USER', id: action.id};
+
+        case ActionTypes.DIALOG_CLOSE:
+            return {};
+
+        default:
+            return state;
+    }
+
+}
+
+
+export default combineReducers({entries, users, ui, mainDialog});
