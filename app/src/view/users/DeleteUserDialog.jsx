@@ -23,16 +23,17 @@ class DeleteUserDialog extends React.Component {
 }
 
 
-function mapStateToProps({ui}) {
+function mapStateToProps({users, mainDialog}) {
+    console.log(mainDialog);
     return {
-        dialogId: ui.dialogId
+        user: users[mainDialog.id],
     };
 }
 
 function mapDisToProps(dis) {
     return {
-        onDeleteUser: id => dis(ActionGenerator.deleteUser(id)),
-        onCancel: () => {},
+        onDeleteUser: id => dis(ActionGenerator.deleteUser(id, true)),
+        onCancel: () => dis(ActionGenerator.Dialog_close()),
     };
 }
 

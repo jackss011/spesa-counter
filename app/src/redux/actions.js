@@ -1,5 +1,6 @@
 import {Storage} from 'model/Storage'
 import {isObjectEmpty} from 'model/utils'
+import {hasUserEntries} from 'redux/helpers'
 
 export const ActionTypes = {
     INIT: 'INIT',
@@ -80,15 +81,23 @@ export class ActionGenerator {
         return {type: ActionTypes.SET_USERS, users};
     }
 
-    static deleteUser(id) {
+    static deleteUser(id, force = false) {
         return (dispatch, getState) => {
-            dispatch({type: ActionTypes.DELETE_USER, id});
 
-            Storage.saveUsers(getState().users);
-            Storage.saveEntries(getState().entries);
+            const hasEntries = hasUserEntries(id, getState().entries);
 
-            if(getState().ui.editUsers && isObjectEmpty(getState().users))
-                dispatch(ActionGenerator.UI_editUsers(false));
+            if(hasEntries && !force) {
+                dispatch(ActionGenerator.Dialog_showDeleteUser(id));
+            }
+            else {
+                dispatch({type: ActionTypes.DELETE_USER, id});
+
+                Storage.saveUsers(getState().users);
+                Storage.saveEntries(getState().entries);
+
+                if(getState().ui.editUsers && isObjectEmpty(getState().users))
+                    dispatch(ActionGenerator.UI_editUsers(false));
+            }
         }
     }
 

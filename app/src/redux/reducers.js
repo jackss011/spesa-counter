@@ -93,6 +93,10 @@ function mainDialog(state = {}, action) {
         case ActionTypes.DIALOG_CLOSE:
             return {};
 
+        case ActionTypes.DELETE_USER:
+            if(state.type === 'DELETE_USER') return {};
+            return state;
+
         default:
             return state;
     }

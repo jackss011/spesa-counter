@@ -9,6 +9,10 @@ export function existUserId(users, id) {
     return getUserIds(users).includes(id);
 }
 
+
+
+// SHAREs
+
 export function calculateShares(users, entries) {
     // {user1_id: toPay, user2_id: toPay}
     let shares = {};
@@ -23,6 +27,16 @@ export function calculateShares(users, entries) {
     return shares;
 }
 
+export function calculateTotalFromShares(shares) {
+    if(!shares) return 0;
+
+    return Object.entries(shares).reduce( (acc, [id, share]) => acc + share, 0);
+}
+
+
+
+
+// DELETE USER
 
 export function deleteAllEntriesWithId(entries, id) {
 
@@ -35,13 +49,17 @@ export function deleteAllEntriesWithId(entries, id) {
     return entries;
 }
 
-
-export function calculateTotalFromShares(shares) {
-    if(!shares) return 0;
-
-    return Object.entries(shares).reduce( (acc, [id, share]) => acc + share, 0);
+export function hasUserEntries(userId, entries) {
+    return Object.entries(entries).reduce(
+        (acc, [id, entry]) => entry.hasId(userId) ?  acc + 1 : acc
+        , 0);
 }
 
+
+
+
+
+// COLORs
 
 export function getUserColorById(users, id) {
     if(!id) return;
