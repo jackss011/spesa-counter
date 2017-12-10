@@ -7,9 +7,19 @@ import {ActionGenerator} from 'redux/actions'
 
 class DeleteUserDialog extends React.Component {
     render() {
+        const user = this.props.user;
+
         return (
             <ConfirmDialog onResult={result => this.onResult(result)}>
-                Are u super duper per mega extra sure?
+
+                <h1>Delete user</h1>
+                <div>
+                    Are you sure you want to delete user: <strong>{user.name}</strong>?
+                </div>
+                <div>
+                    This user has entries that will be deleted with him.
+                </div>
+
             </ConfirmDialog>
         )
     }
