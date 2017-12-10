@@ -4,23 +4,21 @@ import React from 'react'
 class ConfirmDialog extends React.Component {
     render() {
         return (
-            <div
-                className="confirm-dialog"
-                style={{visibility: visible ? 'visible' : 'collapse'}}
-            >
+            <div className="confirm-dialog">
+
                 <div className="content">{this.props.children}</div>
-                
+
                 <div className="buttons">
                     <button
                         className="no"
-                        onClick={e => this.onConfirm(false)}
+                        onClick={e => this.onResult(false)}
                     >
                         Cancel
                     </button>
 
                     <button
                         className="yes"
-                        onClick={e => this.onConfirm(true)}
+                        onClick={e => this.onResult(true)}
                     >
                         Okay
                     </button>
