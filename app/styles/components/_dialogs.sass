@@ -8,6 +8,25 @@
 
     .dialog-window
         +pane
-        padding: 10em
+        padding: .75em 1em
         box-shadow: 1px 2px 7px 0px rgba(black, .2)
+//
+
+
+
+.confirm-dialog
+    +flex(column)
+    // background-color: pink
+
+    &>.content
+        margin: 1em 0
+
+    &>.buttons
+        +flex(row, flex-end, center)
+        align-self: stretch
+
+        .yes
+            +button-ghost($green-add)
+        .no
+            +button-ghost($red-cancel)
 //
