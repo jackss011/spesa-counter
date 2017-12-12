@@ -23,8 +23,14 @@
 //
 
 
+.confirm-dialog > .buttons
+    .yes
+        +button-ghost($green-add)
+    .no
+        +button-ghost($red-cancel)
 
-.confirm-dialog
+
+.confirm-dialog:not(.condensed)
     +flex(column)
     margin: 1.5em
     margin-bottom: 1em
@@ -44,9 +50,20 @@
     &>.buttons
         +flex(row, flex-end, center)
         align-self: stretch
+//
 
-        .yes
-            +button-ghost($green-add)
-        .no
-            +button-ghost($red-cancel)
+
+.confirm-dialog.condensed
+    +flex(row, flex-start, center)
+    align-self: stretch
+    font-size: .9rem
+    padding: .25em 0
+    padding-left: .7em
+    color: #777
+
+
+    &>.buttons
+        margin-left: 1em
+        +flex(row, flex-end, center)
+        flex-grow: 1
 //

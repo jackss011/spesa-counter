@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import ConfirmDialog from 'view/dialog/ConfirmDialog'
+import If from 'view/generic/If'
 
 import {ActionGenerator} from 'redux/actions'
 import {isObjectEmpty} from 'model/utils'
@@ -48,11 +49,13 @@ class EntryHeader extends React.Component {
                     </button>
                 }
 
-                {confirmClear &&
-                    <ConfirmDialog onResult={r => this.confirmClearResult(r)}>
-                        u sure
+                <If if={confirmClear}>
+                    <div className="flex-sep"/>
+
+                    <ConfirmDialog onResult={r => this.confirmClearResult(r)} condensed>
+                        Clear all?
                     </ConfirmDialog>
-                }
+                </If>
 
             </div>
         );
@@ -81,7 +84,7 @@ function mapDispatchToProps(dis) {
         onClear: () => dis(ActionGenerator.UI_showClearEntriesConfirm()),
         onClearCancel: () => dis(ActionGenerator.UI_showClearEntriesConfirm(false)),
         onClearConfirm: () => dis(ActionGenerator.clearEntries()),
-        
+
         onEdit: () => dis(ActionGenerator.UI_editEntries(true)),
         onCancel: () => dis(ActionGenerator.UI_editEntries(false)),
     }

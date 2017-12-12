@@ -3,8 +3,10 @@ import React from 'react'
 
 class ConfirmDialog extends React.Component {
     render() {
+        const condensed = this.props.condensed ? 'condensed' : '';
+
         return (
-            <div className="confirm-dialog">
+            <div className={`confirm-dialog ${condensed}`}>
 
                 <div className="content">{this.props.children}</div>
 
@@ -13,14 +15,14 @@ class ConfirmDialog extends React.Component {
                         className="no"
                         onClick={e => this.onResult(false)}
                     >
-                        Cancel
+                        {condensed ? 'No' : 'Cancel'} 
                     </button>
 
                     <button
                         className="yes"
                         onClick={e => this.onResult(true)}
                     >
-                        Okay
+                        {condensed ? 'Yes' : 'Okay'}
                     </button>
                 </div>
             </div>
