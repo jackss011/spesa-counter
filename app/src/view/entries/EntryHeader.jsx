@@ -50,7 +50,7 @@ class EntryHeader extends React.Component {
                 }
 
                 <If if={confirmClear}>
-                    <div className="flex-sep"/>
+                    {/* <div className="flex-sep"/> */}
 
                     <ConfirmDialog onResult={r => this.confirmClearResult(r)} condensed>
                         Clear all?

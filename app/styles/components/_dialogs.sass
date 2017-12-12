@@ -56,14 +56,23 @@
 .confirm-dialog.condensed
     +flex(row, flex-start, center)
     align-self: stretch
-    font-size: .9rem
+    font-size:  .9rem
     padding: .25em 0
     padding-left: .7em
     color: #777
 
 
     &>.buttons
-        margin-left: 1em
+        margin-left: 1rem
         +flex(row, flex-end, center)
         flex-grow: 1
+
+    @media #{$is-mobile}
+        font-size: 1rem
+
+        &>.buttons
+            .yes
+                margin-left: .2em
+            button
+                font-size: 1.25rem
 //
