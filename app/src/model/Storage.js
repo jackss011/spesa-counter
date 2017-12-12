@@ -4,6 +4,14 @@ import User from 'model/User'
 
 const PREFIX="spesa-counter"
 
+const KEYS = {
+    LAST_ENTRIES: 'last-entries',
+    LAST_USERS: 'last-users',
+    LAST_PANE: 'last-pane',
+}
+
+export {PREFIX, KEYS}
+
 export class Storage {
     static save(key, value) {
         localStorage.setItem(prefix(key), value);
@@ -41,7 +49,6 @@ export class Storage {
         return users;
     }
 }
-
 
 function prefix(key) {
     return PREFIX + ':' + key;

@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux'
 import {ActionTypes} from './actions'
-import {Storage} from 'model/Storage'
-import {deleteAllEntriesWithId} from './helpers'
+import {deleteAllEntriesWithId, isValidPane} from './helpers'
 import {isObjectEmpty} from 'model/utils'
 
 
@@ -80,6 +79,8 @@ function ui(state = uiInitState, action) {
             return Object.assign({}, state, {clearEntriesConfirm: action.show});
 
         case ActionTypes.SET_ENTRIES:
+            if(!action.entries) return state;
+
             if(isObjectEmpty(action.entries))
                 return Object.assign({}, state, {clearEntriesConfirm: false})
             else
@@ -87,6 +88,8 @@ function ui(state = uiInitState, action) {
 
 
         case ActionTypes.UI_SELECT_PANE:
+            if(!isValidPane(action.pane)) return state;
+
             return Object.assign({}, state, {selectedPane: action.pane});
 
 

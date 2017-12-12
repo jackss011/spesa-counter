@@ -1,4 +1,4 @@
-import {Storage} from 'model/Storage'
+import {Storage, KEYS} from 'model/Storage'
 import {isObjectEmpty} from 'model/utils'
 import {hasUserEntries} from 'redux/helpers'
 
@@ -38,6 +38,7 @@ export class ActionGenerator {
 
             dispatch(ActionGenerator.setEntries(Storage.getEntries()));
             dispatch(ActionGenerator.setUsers(Storage.getUsers()));
+            dispatch(ActionGenerator.UI_selectPane(Storage.get(KEYS.LAST_PANE)))
         }
     }
 
@@ -137,7 +138,11 @@ export class ActionGenerator {
 
 
     static UI_selectPane(pane) {
-        return {type: ActionTypes.UI_SELECT_PANE, pane}
+        return dispatch => {
+            dispatch({type: ActionTypes.UI_SELECT_PANE, pane});
+
+            Storage.save(KEYS.LAST_PANE, pane);
+        }
     }
 
 

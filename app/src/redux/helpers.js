@@ -84,3 +84,9 @@ export function getUniqueUserColor(users) {
 
     return makeRandomColor();
 }
+
+
+
+export function isValidPane(pane) {
+    return pane === 'USERS' || pane === 'ENTRIES';
+}
