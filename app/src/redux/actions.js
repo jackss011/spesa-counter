@@ -1,5 +1,6 @@
 import {Storage} from 'model/Storage'
 import {isObjectEmpty} from 'model/utils'
+import {hasUserEntries} from 'redux/helpers'
 
 export const ActionTypes = {
     INIT: 'INIT',
@@ -12,6 +13,7 @@ export const ActionTypes = {
     SET_USERS: 'SET_USERS',
     DELETE_USER: 'DELETE_USER',
 
+
     UI_DISPLAY_ADD_USER: 'UI_DISPLAY_ADD_USER',
     UI_TOGGLE_ADD_USER: 'UI_TOGGLE_ADD_USER',
 
@@ -19,8 +21,13 @@ export const ActionTypes = {
     UI_TOGGLE_EDIT_USERS: 'UI_TOGGLE_EDIT_USERS',
 
     UI_EDIT_ENTRIES: 'UI_EDIT_ENTRIES',
+    UI_SHOW_CLEAR_ENTRIES_CONFIRM: 'UI_SHOW_CLEAR_ENTRIES_CONFIRM',
 
     UI_SELECT_PANE: 'UI_SELECT_PANE',
+
+
+    DIALOG_CLOSE: 'DIALOG_CLOSE',
+    DIALOG_SHOW_DELETE_USER: 'DIALOG_SHOW_DELETE_USER',
 }
 
 
@@ -62,6 +69,12 @@ export class ActionGenerator {
         }
     }
 
+    static clearEntries(request = true) {
+        return dispatch => {
+            dispatch(ActionGenerator.setEntries( {} ));
+        }
+    }
+
 
     static addUser(user) {
         return (dispatch, getState) => {
@@ -75,15 +88,23 @@ export class ActionGenerator {
         return {type: ActionTypes.SET_USERS, users};
     }
 
-    static deleteUser(id) {
+    static deleteUser(id, force = false) {
         return (dispatch, getState) => {
-            dispatch({type: ActionTypes.DELETE_USER, id});
 
-            Storage.saveUsers(getState().users);
-            Storage.saveEntries(getState().entries);
+            const hasEntries = hasUserEntries(id, getState().entries);
 
-            if(getState().ui.editUsers && isObjectEmpty(getState().users))
-                dispatch(ActionGenerator.UI_editUsers(false));
+            if(hasEntries && !force) {
+                dispatch(ActionGenerator.Dialog_showDeleteUser(id));
+            }
+            else {
+                dispatch({type: ActionTypes.DELETE_USER, id});
+
+                Storage.saveUsers(getState().users);
+                Storage.saveEntries(getState().entries);
+
+                if(getState().ui.editUsers && isObjectEmpty(getState().users))
+                    dispatch(ActionGenerator.UI_editUsers(false));
+            }
         }
     }
 
@@ -110,8 +131,22 @@ export class ActionGenerator {
         return {type: ActionTypes.UI_EDIT_ENTRIES, edit};
     }
 
+    static UI_showClearEntriesConfirm(show = true) {
+        return {type: ActionTypes.UI_SHOW_CLEAR_ENTRIES_CONFIRM, show};
+    }
+
 
     static UI_selectPane(pane) {
         return {type: ActionTypes.UI_SELECT_PANE, pane}
+    }
+
+
+
+    static Dialog_close() {
+        return {type: ActionTypes.DIALOG_CLOSE};
+    }
+
+    static Dialog_showDeleteUser(id) {
+        return {type: ActionTypes.DIALOG_SHOW_DELETE_USER, id};
     }
 }

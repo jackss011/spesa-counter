@@ -9,6 +9,7 @@ import TabSelector from 'view/tab/TabSelector'
 import Header from './Header'
 import EntryPane from './entries/EntryPane'
 import UserPane from './users/UserPane'
+import DialogProvider from 'view/dialog/DialogProvider'
 
 
 class App extends React.Component {
@@ -38,6 +39,8 @@ class App extends React.Component {
                         : <UserPane/>}
                     </If>
                 </div>
+
+                <DialogProvider/>
             </div>
         );
     }

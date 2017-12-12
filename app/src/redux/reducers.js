@@ -2,6 +2,7 @@ import { combineReducers } from 'redux'
 import {ActionTypes} from './actions'
 import {Storage} from 'model/Storage'
 import {deleteAllEntriesWithId} from './helpers'
+import {isObjectEmpty} from 'model/utils'
 
 
 function entries(state = {}, action) {
@@ -52,6 +53,7 @@ const uiInitState = {
     displayAddUserForm: false,
     editUsers: false,
     editEntries: false,
+    clearEntriesConfirm: false,
     selectedPane: 'USERS',
 }
 
@@ -74,9 +76,20 @@ function ui(state = uiInitState, action) {
         case ActionTypes.UI_EDIT_ENTRIES:
             return Object.assign({}, state, {editEntries: action.edit});
 
+        case ActionTypes.UI_SHOW_CLEAR_ENTRIES_CONFIRM:
+            return Object.assign({}, state, {clearEntriesConfirm: action.show});
+
+        case ActionTypes.SET_ENTRIES:
+            if(isObjectEmpty(action.entries))
+                return Object.assign({}, state, {clearEntriesConfirm: false})
+            else
+                return state;
+
 
         case ActionTypes.UI_SELECT_PANE:
             return Object.assign({}, state, {selectedPane: action.pane});
+
+
 
 
         default:
@@ -85,4 +98,23 @@ function ui(state = uiInitState, action) {
 }
 
 
-export default combineReducers({entries, users, ui});
+function mainDialog(state = {}, action) {
+    switch(action.type) {
+        case ActionTypes.DIALOG_SHOW_DELETE_USER:
+            return {type: 'DELETE_USER', id: action.id};
+
+        case ActionTypes.DIALOG_CLOSE:
+            return {};
+
+        case ActionTypes.DELETE_USER:
+            if(state.type === 'DELETE_USER') return {};
+            return state;
+
+        default:
+            return state;
+    }
+
+}
+
+
+export default combineReducers({entries, users, ui, mainDialog});
