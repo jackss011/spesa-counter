@@ -21,6 +21,7 @@ export const ActionTypes = {
     UI_TOGGLE_EDIT_USERS: 'UI_TOGGLE_EDIT_USERS',
 
     UI_EDIT_ENTRIES: 'UI_EDIT_ENTRIES',
+    UI_SHOW_CLEAR_ENTRIES_CONFIRM: 'UI_SHOW_CLEAR_ENTRIES_CONFIRM',
 
     UI_SELECT_PANE: 'UI_SELECT_PANE',
 
@@ -65,6 +66,12 @@ export class ActionGenerator {
 
             if(getState().ui.editEntries && isObjectEmpty(getState().entries))
                 dispatch(ActionGenerator.UI_editEntries(false));
+        }
+    }
+
+    static clearEntries(request = true) {
+        return dispatch => {
+            dispatch(ActionGenerator.setEntries( {} ));
         }
     }
 
@@ -122,6 +129,10 @@ export class ActionGenerator {
 
     static UI_editEntries(edit) {
         return {type: ActionTypes.UI_EDIT_ENTRIES, edit};
+    }
+
+    static UI_showClearEntriesConfirm(show = true) {
+        return {type: ActionTypes.UI_SHOW_CLEAR_ENTRIES_CONFIRM, show};
     }
 
 
